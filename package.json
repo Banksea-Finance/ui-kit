@@ -10,10 +10,7 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/banksea-finance"
-  },
-  "repository": "https://github.com/banksea-finance/ui-kit",
+  "repository": "https://github.com/banksea-finance/ui-kit.git",
   "scripts": {
     "start": "yarn storybook",
     "build": "rimraf -rf ./dist && rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist",

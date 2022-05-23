@@ -7,7 +7,7 @@ export const baseColors = {
   secondary: '#7645D9',
   success: '#50E6B4',
   warning: '#F0A055',
-  rainbow: 'linear-gradient(91.26deg, #8AD4EC 0%, #EF96FF 21.74%, #33FBC6 99.99%, #3DB18E 100%)'
+  gradient: 'linear-gradient(90deg, rgb(255, 180, 255) 0%, rgb(25, 240, 150) 100%)'
 }
 
 export const brandColors = {

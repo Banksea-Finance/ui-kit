@@ -1,4 +1,5 @@
-import { Breakpoints, MediaQueries, Shadows, Spacing } from '../types'
+import { Breakpoints, MediaQueries, Shadows, Spacing, ZIndices } from '../types'
+import { Fonts } from '../types/fonts'
 
 export const breakpointMap: { [key: string]: number } = {
   xs: 370,
@@ -36,9 +37,14 @@ const radii = {
   circle: '50%',
 }
 
-const zIndices = {
+const zIndices: ZIndices = {
   dropdown: 10,
   modal: 100,
+}
+
+const fonts: Fonts = {
+  common: 'inherite',
+  important: 'inherite'
 }
 
 export default {
@@ -51,4 +57,5 @@ export default {
   shadows,
   radii,
   zIndices,
+  fonts
 }

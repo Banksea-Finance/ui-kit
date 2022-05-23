@@ -1,9 +1,18 @@
 import React from 'react'
 import { ThemeWrapperProvider, GlobalStyles } from '../src'
 
+import './fonts.css'
+
 const globalDecorator = (StoryFn) => {
   return (
-    <ThemeWrapperProvider>
+    <ThemeWrapperProvider
+      configOverride={{
+        fonts: {
+          common: 'Rajdhani',
+          important: 'G8321'
+        }
+      }}
+    >
       <GlobalStyles/>
       <StoryFn/>
     </ThemeWrapperProvider>

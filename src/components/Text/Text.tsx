@@ -1,18 +1,18 @@
 import styled from 'styled-components'
 import { layout, space, typography } from 'styled-system'
 import { getOverridableStyle, getThemeValue } from '../../utils'
-import { TextProps } from './types'
+import { StyledTextProps, TextProps } from './types'
 
 const getColor = getOverridableStyle('Text', 'color', ({ color = 'text', theme }) => {
   return getThemeValue(`colors.${color}`, color)(theme)
 })
 
-const getFontSize = getOverridableStyle('Text', 'fontSize', ({ fontSize, small }) => {
+const getFontSize = getOverridableStyle('Text', 'fontSize', ({ fontSize, small = false }) => {
   return small ? '14px' : fontSize || '16px'
 })
 
-const getFontFamily = getOverridableStyle('Text', 'fontFamily', ({ important }: TextProps) => {
-  return important ? 'orbitron' : 'inherit'
+const getFontFamily = getOverridableStyle('Text', 'fontFamily', ({ important, theme }) => {
+  return important ? theme.fonts.important : theme.fonts.common
 })
 
 const getFontWeight = getOverridableStyle('Text', 'fontWeight', ({ bold, important }) => {
@@ -20,6 +20,18 @@ const getFontWeight = getOverridableStyle('Text', 'fontWeight', ({ bold, importa
 })
 
 const getLineHeight = getOverridableStyle('Text', 'lineHeight', () => '1.5')
+
+const getGradient = ({ gradient, theme }: StyledTextProps) => {
+  if (gradient) {
+    const background = gradient === true ? theme.colors.gradient : gradient
+
+    return `
+      background: ${background};
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    `
+  }
+}
 
 const Text = styled.div<TextProps>`
   color: ${getColor};
@@ -34,6 +46,8 @@ const Text = styled.div<TextProps>`
 
   text-transform: ${({ textTransform }) => textTransform};
 
+  ${getGradient}
+  
   ${space};
   ${layout};
   ${typography};

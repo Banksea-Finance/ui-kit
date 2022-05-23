@@ -75,10 +75,10 @@ const StyledButton = styled.button<BaseButtonProps>`
   font-weight: ${getFontWeight};
   line-height: ${getLineHeight};
   outline: ${getOutline};
-  
+
   cursor: ${isTouchScreenDevice() ? 'initial' : 'pointer'};
   user-select: none;
-  font-family: inherit;
+  font-family: ${({ theme }) => theme.fonts.common};
 
   transition: all 0.2s, transform 0s;
 
@@ -98,9 +98,9 @@ const StyledButton = styled.button<BaseButtonProps>`
   ${variant({
     variants: styleVariants
   })}
-  
+
   ${getDisabledStyles}
-  
+
   ${layout}
   ${space}
   ${typography}

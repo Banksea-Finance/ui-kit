@@ -1,8 +1,15 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useContext, useMemo, useState } from 'react'
 import { DefaultTheme, ThemeProvider } from 'styled-components'
 import { themes } from '../configs'
-import { ComponentStylesOverride, ThemeType } from '../types'
+import { ComponentStylesOverride, ThemeConfig, ThemeType } from '../types'
 import { NotifyProvider } from './notify-context'
+import { keys } from 'lodash'
+
+type RecursivePartial<T> = {
+  [P in keyof T]?: RecursivePartial<T[P]>;
+};
+
+export type ThemeConfigOverride = RecursivePartial<ThemeConfig>
 
 const THEME_STORAGE_KEY = 'theme'
 
@@ -43,7 +50,24 @@ const useLocalStorage = <T,>(key: string, defaultState?: T): [T | undefined, (ar
   return [state, setLocalStorageState]
 }
 
-const ThemeWrapperProvider: React.FC<{ componentsOverride?: ComponentStylesOverride }> = ({ children, componentsOverride }) => {
+const mergeConfig = (config: ThemeConfig, override?: ThemeConfigOverride) => {
+  if (!override) return config
+
+  const _recursiveMerge = (target: any, source: any): any => {
+    const keysToOverride = Object.keys(source)
+
+    return keysToOverride.reduce((res, key) => {
+      return ({
+        ...res,
+        [key]: typeof source[key] === 'object' ? _recursiveMerge(target[key], source[key]) : source[key]
+      })
+    }, target)
+  }
+
+  return _recursiveMerge(config, override)
+}
+
+const ThemeWrapperProvider: React.FC<{ componentsOverride?: ComponentStylesOverride, configOverride?: ThemeConfigOverride }> = ({ children, componentsOverride, configOverride }) => {
   const [storedThemeType, setStoredTheme] = useLocalStorage<ThemeType>(THEME_STORAGE_KEY, 'dark')
 
   const [themeType, setThemeType] = useState<ThemeType>(storedThemeType as ThemeType)
@@ -63,10 +87,6 @@ const ThemeWrapperProvider: React.FC<{ componentsOverride?: ComponentStylesOverr
     componentStylesOverride: componentsOverride || {}
   }), [themeType])
 
-  useEffect(() => {
-    console.log(activeTheme)
-  }, [activeTheme])
-
   return (
     <ThemeWrapperContext.Provider
       value={{
@@ -75,7 +95,7 @@ const ThemeWrapperProvider: React.FC<{ componentsOverride?: ComponentStylesOverr
         switchTheme
       }}
     >
-      <ThemeProvider theme={activeTheme}>
+      <ThemeProvider theme={mergeConfig(activeTheme, configOverride)}>
         <NotifyProvider>
           {children}
         </NotifyProvider>

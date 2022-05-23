@@ -12,6 +12,7 @@ export interface TextProps extends SpaceProps, LayoutProps, TypographyProps, HTM
   small?: boolean
   textTransform?: 'uppercase' | 'lowercase' | 'capitalize'
   important?: boolean
+  gradient?: string | boolean
 }
 
 export interface StyledTextProps extends TextProps {
