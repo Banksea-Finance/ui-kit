@@ -84,6 +84,50 @@ const CardWithRibbonTemplate = (props: any) => {
   )
 }
 
+const ActiveOnHoverTemplate = (props: any) => (
+  <Grid p={'32px'} gridTemplateColumns={'repeat(3, 300px)'} gridGap={'16px'}>
+    {
+      Object.values(variants).map(v => (
+        <Card
+          width={'300px'}
+          height={'128px'}
+          variant={v}
+          key={v}
+          justifyContent={'center'}
+          alignItems={'center'}
+          color={'white'}
+          activeOnHover
+          {...props}
+        >
+          Active on Hover & <br />
+          Variant: {v}
+        </Card>
+      ))
+    }
+    {
+      Object.values(variants).map(v => (
+        <Card
+          width={'300px'}
+          height={'128px'}
+          variant={v}
+          activeVariant={'primary'}
+          key={v}
+          justifyContent={'center'}
+          alignItems={'center'}
+          color={'white'}
+          activeOnHover
+          {...props}
+        >
+          Active on Hover & <br />
+          Variant: {v} & <br />
+          Active Variant: primary
+        </Card>
+      ))
+    }
+  </Grid>
+)
+
 export const Variants = VariantsTemplate.bind({})
 export const PlainCard = PlainCardTemplate.bind({})
 export const CardWithRibbon = CardWithRibbonTemplate.bind({})
+export const ActiveOnHover = ActiveOnHoverTemplate.bind({})

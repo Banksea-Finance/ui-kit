@@ -1,27 +1,44 @@
 import styled from 'styled-components'
 import { display, flexbox, layout, overflow, space, typography } from 'styled-system'
 import { StyledCardProps } from './types'
-import { getCardTheme } from './theme'
 import { getOverridableStyle, getThemeValue } from '../../utils'
 
-const getBoxShadow = getOverridableStyle('Card', 'boxShadow', ({ plain, theme, variant = 'primary' }) => {
+const getBoxShadow = getOverridableStyle('Card', 'boxShadow', ({ activeOnHover, plain, theme, variant = 'primary', activeVariant }) => {
   if (plain) {
     return ''
   }
 
-  const color = `${theme.colors[variant]}`
+  const color = `${theme.colors[activeVariant || variant]}42`
 
-  return `0px 4px 10px -1px ${color}`
+  if (activeOnHover) {
+    return `
+      box-shadow: none;
+      
+      &:hover {
+        box-shadow: 0px 0px 4px 4px ${color};
+      }
+    `
+  }
+
+  return `box-shadow: 0px 0px 4px 4px ${color};`
 })
 
 const getBackgroundColor = getOverridableStyle('Card', 'backgroundColor', ({ backgroundColor, theme }) => {
   return getThemeValue(`colors.${backgroundColor}`, backgroundColor)(theme)
 })
 
-const getBorder = getOverridableStyle('Card', 'border', ({ variant = 'primary', theme }: StyledCardProps) => {
-  const color = theme.colors[variant]
+const getBorder = getOverridableStyle('Card', 'border', ({ activeOnHover, activeVariant, variant = 'primary', theme }: StyledCardProps) => {
+  if (activeOnHover) {
+    return `
+      border: 1px solid ${theme.colors[variant]};
+      
+      &:hover {
+        border: 1px solid ${theme.colors[activeVariant || variant]};
+      }
+    `
+  }
 
-  return `1px solid ${color}`
+  return `border: 1px solid ${theme.colors[variant]}`
 })
 
 const getBorderRadius = getOverridableStyle('Card', 'borderRadius', () => '32px')
@@ -38,15 +55,10 @@ const StyledCard = styled.div<StyledCardProps>`
 
   color: ${getColor};
   background-color: ${getBackgroundColor};
-  border: ${getBorder};
   border-radius: ${getBorderRadius};
-  box-shadow: ${getBoxShadow};
-
-  ${props => props.activeOnHover && `
-    &:hover {
-      box-shadow: ${getCardTheme(props).boxShadowActive};
-    }  
-  `}
+  
+  ${getBorder};
+  ${getBoxShadow};
 
   ${space}
   ${layout}

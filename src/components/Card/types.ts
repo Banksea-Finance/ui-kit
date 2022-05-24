@@ -1,12 +1,5 @@
 import React, { CSSProperties, HTMLAttributes } from 'react'
-import {
-  DisplayProps,
-  FlexboxProps,
-  LayoutProps,
-  OverflowProps,
-  SpaceProps,
-  TypographyProps
-} from 'styled-system'
+import { DisplayProps, FlexboxProps, LayoutProps, OverflowProps, SpaceProps, TypographyProps } from 'styled-system'
 import { Colors, PickCSSProperties, PropsWithTheme, Variants } from '../../types'
 import { TextProps } from '../Text'
 
@@ -39,6 +32,7 @@ export interface CardProps
   activeOnHover?: boolean
 
   variant?: Variants
+  activeVariant?: Variants
   backgroundColor?: keyof Colors | CSSProperties['color']
   color?: keyof Colors | CSSProperties['color']
 }
