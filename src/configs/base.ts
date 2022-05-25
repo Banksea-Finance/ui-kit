@@ -11,15 +11,15 @@ export const breakpointMap: { [key: string]: number } = {
 
 const breakpoints: Breakpoints = Object.values(breakpointMap).map(breakpoint => `${breakpoint}px`)
 // @ts-ignore
-breakpoints.xs = '0px'
+breakpoints.xs = breakpoints[0]
 // @ts-ignore
-breakpoints.sm = breakpoints[0]
+breakpoints.sm = breakpoints[1]
 // @ts-ignore
-breakpoints.md = breakpoints[1]
+breakpoints.md = breakpoints[2]
 // @ts-ignore
-breakpoints.lg = breakpoints[2]
+breakpoints.lg = breakpoints[3]
 // @ts-ignore
-breakpoints.xl = breakpoints[3]
+breakpoints.xl = breakpoints[4]
 
 const mediaQueries: MediaQueries = Object.fromEntries<string>(
   Object.entries(breakpoints).map(([k, v]) => [k, `@media screen and (min-width: ${v}px)`])
