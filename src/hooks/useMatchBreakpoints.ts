@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { breakpointMap } from '../configs/base'
 import { MediaQueries } from '../types'
 
-type MatchBreakpoints = {
+export type MatchBreakpoints = {
   [key in keyof MediaQueries as `is${Capitalize<key>}`]: boolean;
 };
 
