@@ -4,7 +4,7 @@ import { Shadows } from './shadows'
 import { ZIndices } from './z-indices'
 import { Radii } from './radii'
 import { ComponentStylesOverride } from './override'
-import { Fonts } from './fonts'
+import { FontFamilies } from './fontFamilies'
 
 export type Breakpoints = string[]
 
@@ -25,7 +25,7 @@ export interface ThemeConfig {
   radii: Radii
   zIndices: ZIndices
   componentStylesOverride: ComponentStylesOverride
-  fonts: Fonts
+  fontFamilies: FontFamilies
 }
 
 export { scales } from './scales'

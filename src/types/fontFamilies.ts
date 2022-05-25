@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react'
 
-export interface Fonts {
+export interface FontFamilies {
   common: CSSProperties['fontFamily']
   important: CSSProperties['fontFamily']
 }

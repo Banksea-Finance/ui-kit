@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { breakpointMap } from '../configs/base'
 import { MediaQueries } from '../types'
+import { capitalize } from 'lodash'
 
 export type MatchBreakpoints = {
   [key in keyof MediaQueries as `is${Capitalize<key>}`]: boolean;
@@ -36,37 +37,24 @@ const useMatchBreakpoints = (): MatchBreakpoints => {
   })
 
   useEffect(() => {
-    // Create listeners for each media query returning a function to unsubscribe
-    const handlers = Object.keys(mediaQueries).map(size => {
-      const mql = window.matchMedia(mediaQueries[size as keyof MediaQueries])
-
-      const handler = (matchMediaQuery: MediaQueryListEvent) => {
-        const key = getKey(size)
-        setState(prevState => ({
-          ...prevState,
-          [key]: matchMediaQuery.matches,
+    const mqls = Object.keys(mediaQueries).map(size => ({
+      mql: window.matchMedia(mediaQueries[size as keyof MediaQueries]),
+      handler: (e: MediaQueryListEvent) => {
+        setState(prev => ({
+          ...prev,
+          [`is${capitalize(size)}`]: e.matches
         }))
       }
+    }))
 
-      // Safari < 14 fix
-      if (mql.addEventListener) {
-        mql.addEventListener('change', handler)
-      }
-
-      return () => {
-        // Safari < 14 fix
-        if (mql.removeEventListener) {
-          mql.removeEventListener('change', handler)
-        }
-      }
-    })
+    mqls.forEach(({ mql, handler }) => mql.addEventListener('change', handler))
 
     return () => {
-      handlers.forEach(unsubscribe => {
-        unsubscribe()
+      mqls.forEach(({ mql,handler }) => {
+        mql.removeEventListener('change', handler)
       })
     }
-  }, [setState])
+  }, [])
 
   return state
 }

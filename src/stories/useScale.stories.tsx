@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Text } from '../components'
-import { useScale } from '../hooks/useScale'
-import { useMatchBreakpoints } from '../hooks'
+import { useMatchBreakpoints, useScale } from '../hooks'
 import { scales } from '../types'
 
 export default {

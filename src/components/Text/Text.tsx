@@ -12,7 +12,7 @@ const getFontSize = getOverridableStyle('Text', 'fontSize', ({ fontSize, small =
 })
 
 const getFontFamily = getOverridableStyle('Text', 'fontFamily', ({ important, theme }) => {
-  return important ? theme.fonts.important : theme.fonts.common
+  return important ? theme.fontFamilies.important : theme.fontFamilies.common
 })
 
 const getFontWeight = getOverridableStyle('Text', 'fontWeight', ({ bold, important }) => {

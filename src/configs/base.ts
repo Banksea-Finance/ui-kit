@@ -1,5 +1,5 @@
 import { Breakpoints, MediaQueries, Shadows, Spacing, ZIndices } from '../types'
-import { Fonts } from '../types/fonts'
+import { FontFamilies } from '../types/fontFamilies'
 
 export const breakpointMap: { [key: string]: number } = {
   xs: 370,
@@ -10,14 +10,20 @@ export const breakpointMap: { [key: string]: number } = {
 }
 
 const breakpoints: Breakpoints = Object.values(breakpointMap).map(breakpoint => `${breakpoint}px`)
+// @ts-ignore
+breakpoints.xs = '0px'
+// @ts-ignore
+breakpoints.sm = breakpoints[0]
+// @ts-ignore
+breakpoints.md = breakpoints[1]
+// @ts-ignore
+breakpoints.lg = breakpoints[2]
+// @ts-ignore
+breakpoints.xl = breakpoints[3]
 
-const mediaQueries: MediaQueries = {
-  xs: `@media screen and (max-width: ${breakpointMap.xs}px)`,
-  sm: `@media screen and (max-width: ${breakpointMap.sm}px)`,
-  md: `@media screen and (max-width: ${breakpointMap.md}px)`,
-  lg: `@media screen and (max-width: ${breakpointMap.lg}px)`,
-  xl: `@media screen and (max-width: ${breakpointMap.xl}px)`,
-}
+const mediaQueries: MediaQueries = Object.fromEntries<string>(
+  Object.entries(breakpoints).map(([k, v]) => [k, `@media screen and (max-width: ${v}px)`])
+) as unknown as MediaQueries
 
 export const shadows: Shadows = {
   level1: '0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05)',
@@ -42,7 +48,7 @@ const zIndices: ZIndices = {
   modal: 100,
 }
 
-const fonts: Fonts = {
+const fontFamilies: FontFamilies = {
   common: 'inherite',
   important: 'inherite'
 }
@@ -57,5 +63,5 @@ export default {
   shadows,
   radii,
   zIndices,
-  fonts
+  fontFamilies
 }

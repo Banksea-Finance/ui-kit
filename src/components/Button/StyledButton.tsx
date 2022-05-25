@@ -78,7 +78,7 @@ const StyledButton = styled.button<BaseButtonProps>`
 
   cursor: ${isTouchScreenDevice() ? 'initial' : 'pointer'};
   user-select: none;
-  font-family: ${({ theme }) => theme.fonts.common};
+  font-family: ${({ theme }) => theme.fontFamilies.common};
 
   transition: all 0.2s, transform 0s;
 
