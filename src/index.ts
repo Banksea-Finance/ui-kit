@@ -1,5 +1,5 @@
 export {
-  useMatchBreakpoints, useResponsive
+  useMatchBreakpoints, useResponsive, useScale
 } from './hooks'
 
 // Theme
