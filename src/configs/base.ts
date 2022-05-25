@@ -22,7 +22,7 @@ breakpoints.lg = breakpoints[2]
 breakpoints.xl = breakpoints[3]
 
 const mediaQueries: MediaQueries = Object.fromEntries<string>(
-  Object.entries(breakpoints).map(([k, v]) => [k, `@media screen and (max-width: ${v}px)`])
+  Object.entries(breakpoints).map(([k, v]) => [k, `@media screen and (min-width: ${v}px)`])
 ) as unknown as MediaQueries
 
 export const shadows: Shadows = {

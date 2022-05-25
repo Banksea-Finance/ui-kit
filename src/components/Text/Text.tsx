@@ -7,10 +7,6 @@ const getColor = getOverridableStyle('Text', 'color', ({ color = 'text', theme }
   return getThemeValue(`colors.${color}`, color)(theme)
 })
 
-const getFontSize = getOverridableStyle('Text', 'fontSize', ({ fontSize, small = false }) => {
-  return small ? '14px' : fontSize || '16px'
-})
-
 const getFontFamily = getOverridableStyle('Text', 'fontFamily', ({ important, theme }) => {
   return important ? theme.fontFamilies.important : theme.fontFamilies.common
 })
@@ -35,7 +31,6 @@ const getGradient = ({ gradient, theme }: StyledTextProps) => {
 
 const Text = styled.div<TextProps>`
   color: ${getColor};
-  font-size: ${getFontSize};
   font-family: ${getFontFamily};
   font-weight: ${getFontWeight};
   line-height: ${getLineHeight};

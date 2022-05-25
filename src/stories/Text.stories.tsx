@@ -13,7 +13,7 @@ export const Colors = () => (
     <Grid gridGap={'16px'} gridTemplateColumns={'repeat(3, max-content)'}>
       {
         Object.values(variants).map(v => (
-          <Text textAlign={'center'} color={v} fontSize={'24px'} key={v} important textTransform={'uppercase'}>{v}</Text>
+          <Text textAlign={'center'} color={v} fontSize={{ xl: '24px', lg: '20px', xs: '12px' }} key={v} important textTransform={'uppercase'}>{v}</Text>
         ))
       }
     </Grid>

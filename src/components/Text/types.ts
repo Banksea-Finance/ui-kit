@@ -7,9 +7,7 @@ export interface TextProps extends SpaceProps, LayoutProps, TypographyProps, HTM
   as?: 'div' | 'span'
 
   color?: keyof Colors | CSSProperties['color']
-  fontSize?: string
   bold?: boolean
-  small?: boolean
   textTransform?: 'uppercase' | 'lowercase' | 'capitalize'
   important?: boolean
   gradient?: string | boolean
