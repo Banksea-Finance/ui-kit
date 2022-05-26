@@ -21,7 +21,7 @@ const MenuItemButton = styled(Button)`
   box-shadow: none;
   color: ${({ theme }) => theme.colors.textContrary};
 
-  ${({ theme }) => theme.mediaQueries.xl} {
+  ${({ theme }) => theme.mediaQueries.maxXl} {
     padding: 8px 20px;
   }
 

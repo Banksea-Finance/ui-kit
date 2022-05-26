@@ -1,7 +1,8 @@
-import { Breakpoints, MediaQueries, Shadows, Spacing, ZIndices } from '../types'
+import { BreakpointKeys, MediaQueries, Shadows, Spacing, ZIndices } from '../types'
 import { FontFamilies } from '../types/fontFamilies'
+import { capitalize } from 'lodash'
 
-export const breakpointMap: { [key: string]: number } = {
+export const breakpointMap: Record<BreakpointKeys, number> = {
   xs: 370,
   sm: 576,
   md: 852,
@@ -9,7 +10,7 @@ export const breakpointMap: { [key: string]: number } = {
   xl: 1080
 }
 
-const breakpoints: Breakpoints = Object.values(breakpointMap).map(breakpoint => `${breakpoint}px`)
+const breakpoints = Object.values(breakpointMap).map(breakpoint => `${breakpoint}px`)
 // @ts-ignore
 breakpoints.xs = breakpoints[0]
 // @ts-ignore
@@ -21,9 +22,15 @@ breakpoints.lg = breakpoints[3]
 // @ts-ignore
 breakpoints.xl = breakpoints[4]
 
-const mediaQueries: MediaQueries = Object.fromEntries<string>(
-  Object.entries(breakpoints).map(([k, v]) => [k, `@media screen and (min-width: ${v})`])
-) as unknown as MediaQueries
+const mediaQueries: MediaQueries = {
+  ...Object.fromEntries<string>(
+    Object.entries(breakpoints).map(([k, v]) => [`min${capitalize(k)}`, `@media screen and (min-width: ${v})`])
+  ),
+
+  ...Object.fromEntries<string>(
+    Object.entries(breakpoints).map(([k, v]) => [`max${capitalize(k)}`, `@media screen and (max-width: ${v})`])
+  )
+} as unknown as MediaQueries
 
 export const shadows: Shadows = {
   level1: '0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05)',

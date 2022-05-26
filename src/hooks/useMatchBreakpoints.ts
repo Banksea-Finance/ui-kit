@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { breakpointMap } from '../configs/base'
-import { MediaQueries } from '../types'
+import { BreakpointKeys, MediaQueries } from '../types'
 import { capitalize } from 'lodash'
 
 export type MatchBreakpoints = {
-  [key in keyof MediaQueries as `is${Capitalize<key>}`]: boolean;
+  [key in BreakpointKeys as `is${Capitalize<key>}`]: boolean;
 };
 
 const mediaQueries: MediaQueries = (() => {
@@ -16,7 +16,7 @@ const mediaQueries: MediaQueries = (() => {
     }
 
     const minWidth = prevMinWidth
-    const breakpoint = breakpointMap[size]
+    const breakpoint = breakpointMap[size as BreakpointKeys]
 
     // Min width for next iteration
     prevMinWidth = breakpoint + 1

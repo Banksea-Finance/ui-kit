@@ -6,8 +6,6 @@ import { Radii } from './radii'
 import { ComponentStylesOverride } from './override'
 import { FontFamilies } from './fontFamilies'
 
-export type Breakpoints = string[]
-
 export type Spacing = number[]
 
 export type ThemeType = 'light' | 'dark'
@@ -18,7 +16,7 @@ export interface ThemeConfig {
   navbarHeight: string
   isDark: boolean
   colors: Colors
-  breakpoints: Breakpoints
+  breakpoints: string[]
   mediaQueries: MediaQueries
   spacing: Spacing
   shadows: Shadows
@@ -40,3 +38,5 @@ export type { Shadows } from './shadows'
 export type { ZIndices } from './z-indices'
 export type { Radii } from './radii'
 export * from './override'
+export type { BreakpointKeys } from './breakpoints'
+export type { ResponsiveValue } from './responsive-value'

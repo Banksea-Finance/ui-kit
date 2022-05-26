@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { css } from 'styled-components'
 
 const FadeEffect = css`
   animation-duration: 0.3s;
@@ -16,7 +16,7 @@ export const NotificationStyleMixin = css`
     left: 16px;
     min-width: 300px;
 
-    ${({ theme }) => theme.mediaQueries.xl} {
+    ${({ theme }) => theme.mediaQueries.maxXl} {
       display: flex;
       justify-content: center;
       width: 100%;
@@ -41,7 +41,7 @@ export const NotificationStyleMixin = css`
       position: relative;
       margin: 8px 0 0 0 ;
       
-      ${({ theme }) => theme.mediaQueries.xl} {
+      ${({ theme }) => theme.mediaQueries.maxXl} {
         margin: 4px 0 0 0;
       }
 
@@ -66,7 +66,7 @@ export const NotificationStyleMixin = css`
         &-x:after {
           content: '×';
           
-          ${({ theme }) => theme.mediaQueries.xl} {
+          ${({ theme }) => theme.mediaQueries.maxXl} {
             font-size: 24px;
           }
         }
