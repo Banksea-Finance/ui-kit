@@ -5,20 +5,23 @@ import { ButtonProps, buttonVariant } from './types'
 import { Flex } from '../Box'
 import { scales } from '../../types'
 import { DotLoader } from 'react-spinners'
+import { useScale } from '../../hooks'
 
 const Button = <E extends ElementType = 'button'>(props: ButtonProps<E>): JSX.Element => {
+  const scale = useScale()
+
   const { startIcon, endIcon, external, className, isLoading, disabled, children, ...rest } = props
   const internalProps = external ? getExternalLinkProps() : {}
   const isDisabled = isLoading || disabled
   const classNames = className ? [className] : []
-  const scale = props.scale
+  const _scale = props.autoScale ? scale : props.scale
 
   return (
     <StyledButton
       $isLoading={isLoading}
       className={classNames.join(' ')}
       disabled={isDisabled}
-      scale={scale}
+      scale={_scale}
       {...internalProps}
       {...rest}
     >

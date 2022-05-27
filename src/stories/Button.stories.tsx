@@ -35,6 +35,14 @@ export const Variants = () => {
         ))
       }
 
+      <Button variant={'outlined'}>
+        Outlined Button
+      </Button>
+
+      <Button variant={'text'}>
+        Text Button
+      </Button>
+
       <Button disabled>
         Disabled
       </Button>

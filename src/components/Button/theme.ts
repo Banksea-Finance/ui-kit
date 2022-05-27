@@ -60,6 +60,7 @@ export const styleVariants: Record<ButtonVariant, any> = {
     boxShadow: 'none',
   },
   [buttonVariant.outlined]: {
-    color: 'primary'
+    color: 'primary',
+    fontWeight: 'bold'
   }
 }

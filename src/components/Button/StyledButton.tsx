@@ -47,7 +47,7 @@ const getBackgroundColor = getOverridableStyle('Button', 'backgroundColor', ({ t
 })
 
 const getBorder = getOverridableStyle('Button', 'border', ({ variant, theme }) => {
-  if (variant === 'outlined') return `1px solid ${theme.colors.primary}`
+  if (variant === 'outlined') return `2px solid ${theme.colors.primary}`
 
   return 'none'
 })
