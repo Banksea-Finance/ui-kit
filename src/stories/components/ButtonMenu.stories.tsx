@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ButtonMenu, Grid } from '..'
+import { ButtonMenu, Grid } from '../../index'
 
 export default {
   title: 'Components/ButtonMenu',

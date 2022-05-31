@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Flex } from '../components'
+import { Box, Button, Flex } from '../../components'
 import * as _ from 'lodash'
 
 export default {

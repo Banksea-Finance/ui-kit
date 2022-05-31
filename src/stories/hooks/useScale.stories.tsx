@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, Text } from '../components'
-import { useMatchBreakpoints, useScale } from '../hooks'
-import { scales } from '../types'
+import { Button, Text } from '../../components'
+import { useMatchBreakpoints, useScale } from '../../hooks'
+import { scales } from '../../types'
 
 export default {
   title: 'Hooks/useScale',

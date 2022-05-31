@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useMemo, useState } from 'react'
 import { DefaultTheme, ThemeProvider } from 'styled-components'
 import { themes } from '../configs'
 import { ComponentStylesOverride, ThemeConfig, ThemeType } from '../types'
+import { ModalProvider } from '../widgets'
 import { NotifyProvider } from './notify-context'
 
 type RecursivePartial<T> = {
@@ -103,7 +104,9 @@ const ThemeWrapperProvider: React.FC<{ componentsOverride?: ComponentStylesOverr
     >
       <ThemeProvider theme={activeTheme}>
         <NotifyProvider>
-          {children}
+          <ModalProvider>
+            {children}
+          </ModalProvider>
         </NotifyProvider>
       </ThemeProvider>
     </ThemeWrapperContext.Provider>

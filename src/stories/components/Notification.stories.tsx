@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Grid, Notification } from '../components'
-import { useNotify } from '../contexts'
+import { Button, Grid, Notification } from '../../components'
+import { useNotify } from '../../contexts'
 
 export default {
   title: 'Components/Notification',

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Card, CardRibbon, Colors, Grid, variants } from '..'
+import { Card, CardRibbon, Colors, Grid, variants } from '../../index'
 
 export default {
   title: 'Components/Card',

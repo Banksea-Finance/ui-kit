@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Text } from '../components'
-import { useMatchBreakpoints } from '../hooks'
+import { Button, Text } from '../../components'
+import { useMatchBreakpoints } from '../../hooks'
 
 export default {
   title: 'Hooks/useMatchBreakpoints',

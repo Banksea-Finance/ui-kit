@@ -1,14 +1,15 @@
-import React, { ReactNode, useEffect, useMemo } from 'react'
+import React, { ReactNode, useCallback, useEffect, useMemo } from 'react'
 import { Button, ButtonProps } from '../Button'
 import { Card, CardProps } from '../Card'
 import { Text, TextProps } from '../Text'
 import { useResponsive } from '../../hooks'
-import { Flex, Box } from '../Box'
+import { Box, Flex } from '../Box'
 import { FlexboxProps, HeightProps } from 'styled-system'
 import { CloseSvg } from '../../assets/svgs'
+import { useModal } from '../../widgets'
 
 export type DialogProps = Omit<CardProps & {
-  title: string | ReactNode
+  title: ReactNode
   titlePrefix?: ReactNode
   cancelButtonProps?: ButtonProps
   confirmButtonProps?: ButtonProps
@@ -36,6 +37,14 @@ const DialogContainer: React.FC<DialogProps> = ({ minWidth, width, variant, ...r
 }
 
 const DialogHeader: React.FC<DialogProps> = ({ titlePrefix, title, variant, closeable, onClose }) => {
+  const { closeModal } = useModal()
+
+  const handleClose = useCallback(() => {
+    if (onClose) onClose()
+
+    closeModal()
+  }, [onClose, closeModal])
+
   return (
     <Flex
       jc={'space-between'}
@@ -50,7 +59,7 @@ const DialogHeader: React.FC<DialogProps> = ({ titlePrefix, title, variant, clos
       </Flex>
       {
         closeable && (
-          <div style={{ cursor: 'pointer' }} onClick={onClose}>
+          <div style={{ cursor: 'pointer' }} onClick={handleClose}>
             <CloseSvg />
           </div>
         )
@@ -134,12 +143,12 @@ const useDialogKeyboardListener = ({ onClose, closeable, onConfirm, confirmButto
   }, [closeable, onConfirm, confirmButtonProps])
 }
 
-const Dialog: React.FC<DialogProps> = ({ children, ...props }) => {
+export const Dialog: React.FC<DialogProps> = ({ children, closeable = true, ...props }) => {
   useDialogKeyboardListener(props)
 
   return (
     <DialogContainer {...props}>
-      <DialogHeader {...props} />
+      <DialogHeader {...props} closeable={closeable} />
       <Box margin={'32px 0'}>
         { children }
       </Box>
@@ -148,9 +157,3 @@ const Dialog: React.FC<DialogProps> = ({ children, ...props }) => {
     </DialogContainer>
   )
 }
-
-Dialog.defaultProps = {
-  closeable: true
-}
-
-export default Dialog

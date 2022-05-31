@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Card, Checkbox, Grid, scales, variants } from '..'
+import { Card, Checkbox, Grid, scales, variants } from '../../index'
 
 export default {
   title: 'Components/Checkbox',

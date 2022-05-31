@@ -33,6 +33,7 @@
     "lodash": "^4.17.21",
     "rc-input": "^0.0.1-alpha.7",
     "rc-notification": "^5.0.0-alpha.8",
+    "react-modal": "^3.14.4",
     "react-router-dom": "^6.3.0",
     "react-spinners": "^0.11.0",
     "react-transition-group": "^4.4.2"
@@ -50,6 +51,7 @@
     "@storybook/testing-library": "^0.0.11",
     "@storybook/theming": "^6.4.22",
     "@types/lodash": "^4.14.182",
+    "@types/react-modal": "^3.13.1",
     "@types/react-transition-group": "^4.4.4",
     "@types/styled-components": "^5.1.15",
     "@types/styled-system": "^5.1.15",

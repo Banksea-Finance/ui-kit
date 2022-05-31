@@ -13,3 +13,4 @@ export * from './components'
 
 export * from './types'
 export { ThemeWrapperProvider, useThemeWrapper, useNotify } from './contexts'
+export * from './widgets'

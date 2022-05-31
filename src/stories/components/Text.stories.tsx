@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Grid, Text, variants } from '..'
+import { Grid, Text, variants } from '../../index'
 
 export default {
   title: 'Components/Text',

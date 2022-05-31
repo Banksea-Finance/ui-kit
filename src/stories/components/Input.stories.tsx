@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { Button, FormItem, Grid, Input, scales, variants } from '..'
-import { AiOutlineEnter, AiOutlineFileSearch, BsSearch, RiTerminalBoxLine } from 'react-icons/all'
-import { RiParenthesesFill } from 'react-icons/ri'
+import { Button, FormItem, Grid, Input, scales, variants } from '../../index'
+import { AiOutlineEnter, BsSearch } from 'react-icons/all'
 
 export default {
   title: 'Components/Input',

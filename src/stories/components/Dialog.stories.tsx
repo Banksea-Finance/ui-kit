@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Dialog, Grid, variants } from '..'
+import { Dialog, Grid, variants } from '../../index'
 import { RiTerminalBoxLine } from 'react-icons/all'
 
 export default {

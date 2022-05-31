@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, Grid, scales, variants } from '..'
+import { Button, Grid, scales, variants } from '../../index'
 import { BsFillAlarmFill, BsFillArchiveFill } from 'react-icons/bs'
 import { upperFirst } from 'lodash'
 

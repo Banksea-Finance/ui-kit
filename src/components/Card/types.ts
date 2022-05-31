@@ -23,7 +23,7 @@ export interface CardProps
     FlexboxProps,
     LayoutProps,
     SpaceProps,
-    Omit<HTMLAttributes<HTMLDivElement>, 'color'>,
+    Omit<HTMLAttributes<HTMLDivElement>, 'color' | 'title'>,
     TypographyProps,
     OverflowProps {
 
