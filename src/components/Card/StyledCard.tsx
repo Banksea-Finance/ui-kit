@@ -23,7 +23,7 @@ const getBoxShadow = getOverridableStyle('Card', 'boxShadow', ({ activeOnHover, 
   return `box-shadow: 0px 0px 4px 4px ${color};`
 })
 
-const getBackgroundColor = getOverridableStyle('Card', 'backgroundColor', ({ backgroundColor, theme }) => {
+const getBackgroundColor = getOverridableStyle('Card', 'backgroundColor', ({ backgroundColor = 'backgroundSecondary', theme }) => {
   return getThemeValue(`colors.${backgroundColor}`, backgroundColor)(theme)
 })
 
