@@ -12,5 +12,8 @@ export {
 export * from './components'
 
 export * from './types'
-export { ThemeWrapperProvider, useThemeWrapper, useNotify } from './contexts'
+export { ThemeWrapperProvider, useTheme, useNotify } from './contexts'
 export * from './widgets'
+
+export { ModalProvider } from './widgets'
+export { NotifyProvider } from './contexts'

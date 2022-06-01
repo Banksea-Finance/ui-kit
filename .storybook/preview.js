@@ -1,5 +1,5 @@
 import React from 'react'
-import { GlobalStyles, ThemeWrapperProvider } from '../src'
+import { GlobalStyles, ModalProvider, NotifyProvider, ThemeWrapperProvider } from '../src'
 
 import './fonts.css'
 
@@ -14,7 +14,11 @@ const globalDecorator = (StoryFn) => {
       }}
     >
       <GlobalStyles/>
-      <StoryFn/>
+      <NotifyProvider>
+        <ModalProvider>
+          <StoryFn/>
+        </ModalProvider>
+      </NotifyProvider>
     </ThemeWrapperProvider>
   )
 }

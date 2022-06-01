@@ -20,12 +20,12 @@ export const Variants = () => {
 }
 
 export const TriggerByHook = () => {
-  const { open } = useNotify()
+  const { notify } = useNotify()
 
   return (
     <Grid padding={'16px'} gridTemplateColumns={'repeat(2, max-content)'} gridGap={'32px'}>
       <Button
-        onClick={() => open({
+        onClick={() => notify({
           title: 'Here is title',
           description: 'Here is description',
           placement: 'bottomLeft'
@@ -34,7 +34,7 @@ export const TriggerByHook = () => {
         Notify(bottomLeft)
       </Button>
       <Button
-        onClick={() => open({
+        onClick={() => notify({
           title: 'Here is title',
           description: 'Here is description',
           placement: 'bottomRight'
@@ -43,7 +43,7 @@ export const TriggerByHook = () => {
         Notify(bottomRight)
       </Button>
       <Button
-        onClick={() => open({
+        onClick={() => notify({
           title: 'Here is title',
           description: 'Here is description',
           placement: 'topLeft'
@@ -52,7 +52,7 @@ export const TriggerByHook = () => {
         Notify(topLeft)
       </Button>
       <Button
-        onClick={() => open({
+        onClick={() => notify({
           title: 'Here is title',
           description: 'Here is description',
           placement: 'topRight'

@@ -2,8 +2,6 @@ import React, { useCallback, useContext, useMemo, useState } from 'react'
 import { DefaultTheme, ThemeProvider } from 'styled-components'
 import { themes } from '../configs'
 import { ComponentStylesOverride, ThemeConfig, ThemeType } from '../types'
-import { ModalProvider } from '../widgets'
-import { NotifyProvider } from './notify-context'
 
 type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>;
@@ -68,7 +66,10 @@ const mergeConfig = (config: ThemeConfig, override?: ThemeConfigOverride) => {
   return _recursiveMerge(config, override)
 }
 
-const ThemeWrapperProvider: React.FC<{ componentsOverride?: ComponentStylesOverride, configOverride?: ThemeConfigOverride }> = ({
+const ThemeWrapperProvider: React.FC<{
+  componentsOverride?: ComponentStylesOverride,
+  configOverride?: ThemeConfigOverride,
+}> = ({
   children,
   componentsOverride,
   configOverride
@@ -103,24 +104,20 @@ const ThemeWrapperProvider: React.FC<{ componentsOverride?: ComponentStylesOverr
       }}
     >
       <ThemeProvider theme={activeTheme}>
-        <NotifyProvider>
-          <ModalProvider>
-            {children}
-          </ModalProvider>
-        </NotifyProvider>
+        {children as any}
       </ThemeProvider>
     </ThemeWrapperContext.Provider>
   )
 }
 
-const useThemeWrapper = () => {
+const useTheme = () => {
   const { themeType, theme, switchTheme } = useContext(ThemeWrapperContext)
 
   return {
     themeType,
-    themeInstance: theme,
+    theme,
     switchTheme
   }
 }
 
-export { ThemeWrapperProvider, useThemeWrapper }
+export { ThemeWrapperProvider, useTheme }
