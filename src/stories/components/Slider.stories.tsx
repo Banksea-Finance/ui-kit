@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box, Button, Text } from '../../components'
-import { Slider } from '../../components/Slider'
+import { Box, Button, Text, Slider } from '../../components'
 import { variants } from '../../types'
 
 export default {

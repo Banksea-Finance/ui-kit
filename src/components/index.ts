@@ -27,6 +27,9 @@ export { Notification } from './Notification'
 export { Skeleton } from './Skeleton'
 export type { SkeletonProps } from './Skeleton'
 
+export { Slider } from './Slider'
+export type { SliderOverridableCSSProperties, SliderProps } from './Slider'
+
 export { Tabs } from './Tabs'
 export type { TabsProps, TabPaneProps } from './Tabs'
 

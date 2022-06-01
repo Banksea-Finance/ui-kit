@@ -55,8 +55,8 @@ export type OverridablePropertiesByComponent = OverridablePropertiesByComponentC
 }>
 
 export type StyleBuilder<Key extends (keyof CSSProperties | string), ComponentProps> =
-  | Key extends keyof CSSProperties ? CSSProperties[Key] : string
-    | ((props: ComponentProps) => Key extends keyof CSSProperties ? CSSProperties[Key] : string)
+  | (Key extends keyof CSSProperties ? CSSProperties[Key] : string)
+  | ((props: ComponentProps) => Key extends keyof CSSProperties ? CSSProperties[Key] : string)
 
 export type ComponentStylesOverride = {
   [ComponentName in keyof OverridablePropertiesByComponent]?: {
