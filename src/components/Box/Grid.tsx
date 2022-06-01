@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { grid, flexbox } from 'styled-system'
-import Box from './Box'
+import { grid } from 'styled-system'
+import Flex from './Flex'
 import { GridProps } from './types'
 
-const Grid = styled(Box)<GridProps>`
+const Grid = styled(Flex)<GridProps>`
   display: grid;
-  ${flexbox};
+  
   ${grid};
 `
 

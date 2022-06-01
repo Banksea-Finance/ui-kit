@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Flex } from '../../components'
+import { Box, Button, Flex, Grid } from '../../components'
 import * as _ from 'lodash'
 
 export default {
@@ -8,8 +8,8 @@ export default {
   argTypes: {},
 }
 
-export const Default = () => (
-  <Box>
+export const _Flex = () => (
+  <Box p={'16px'}>
     <Flex
       jc={{ xl: 'space-between', md: 'center', xs: 'space-between', _: 'space-between' }}
       ai={{ xl: 'start', md: 'center', xs: 'end', _: 'end' }}
@@ -38,5 +38,17 @@ export const Default = () => (
         ))
       }
     </Flex>
+  </Box>
+)
+
+export const _Grid = () => (
+  <Box p={'16px'}>
+    <Grid gridTemplateColumns={'repeat(5, 200px)'} ai={'center'} jc={'center'} justifyItems={'center'} gridTemplateRows={'repeat(2, 150px)'}>
+      {
+        _.range(10).map(o => (
+          <Box key={o} width={100} height={100} background={'primary'} border={'1px solid green'} />
+        ))
+      }
+    </Grid>
   </Box>
 )
