@@ -109,7 +109,7 @@ export const StyledSlider = styled(SliderUnstyled)<StyledSliderProps>`
 
   & .${sliderUnstyledClasses.thumb} {
     position: absolute;
-    margin-left: -6px;
+    margin-left: -8px;
     margin-top: -6px;
     width: 16px;
     height: 16px;
