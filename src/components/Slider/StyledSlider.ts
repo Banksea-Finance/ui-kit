@@ -5,14 +5,13 @@ import { getOverridableStyle } from '../../utils'
 
 export const StyledSlider = styled(SliderUnstyled)<StyledSliderProps>`
   width: 100%;
+  padding: 12px 0;
   display: inline-block;
   position: relative;
   cursor: pointer;
   touch-action: none;
   -webkit-tap-highlight-color: transparent;
- 
-  height: ${getOverridableStyle('Slider', 'height', '4px')};
-  padding: ${getOverridableStyle('Slider', 'padding', '13px 0')};
+
   opacity: ${getOverridableStyle('Slider', 'opacity', '1')};
 
   &:hover {
@@ -39,7 +38,7 @@ export const StyledSlider = styled(SliderUnstyled)<StyledSliderProps>`
   & .${sliderUnstyledClasses.track} {
     display: block;
     position: absolute;
-   
+
     height: ${getOverridableStyle('Slider', 'trackHeight', '4px')};
     border-radius: ${getOverridableStyle('Slider', 'trackBorderRadius', '2px')};
     background-color: ${getOverridableStyle('Slider', 'trackColor', ({ theme, variant = 'primary' }) => theme.colors[variant])};
@@ -61,19 +60,40 @@ export const StyledSlider = styled(SliderUnstyled)<StyledSliderProps>`
     background-color: ${getOverridableStyle('Slider', 'markActiveColor', '#fff')};
   }
 
-  // & .$/{sliderUnstyledClasses.valueLabel} {
-  //   font-size: 14px;
-  //   display: block;
-  //   position: relative;
-  //   top: -1.6em;
-  //   text-align: center;
-  //   transform: translateX(-50%);
-  // }
+  & .${sliderUnstyledClasses.valueLabel} {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    line-height: 1.2;
+    width: 32px;
+    height: 32px;
+    bottom: 40px;
+    right: 10px;
+    border-radius: 4px;
+
+    background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+    color: ${({ theme }) => theme.colors.text};
+    transform-origin: bottom left;
+    opacity: 0;
+
+    transition: opacity 0.38s;
+
+    &:before {
+      display: none;
+    }
+
+    &.MuiSlider-valueLabelOpen {
+      opacity: ${({ tooltip = true }) => tooltip ? '1' : '0'};
+    }
+  }
 
   & .${sliderUnstyledClasses.markLabel} {
     position: absolute;
     transform: translateX(-50%);
-    
+
     top: ${getOverridableStyle('Slider', 'markLabelTop', '24px')};
     color: ${getOverridableStyle('Slider', 'markLabelColor', ({ theme }) => theme.colors.textDisabled)};
     font-size: ${getOverridableStyle('Slider', 'markLabelFontSize', '12px')};
@@ -83,24 +103,17 @@ export const StyledSlider = styled(SliderUnstyled)<StyledSliderProps>`
     color: ${getOverridableStyle('Slider', 'markLabelActiveColor', ({ theme }) => theme.colors.text)};
   }
 
-    & .${sliderUnstyledClasses.thumb} {
+  & .${sliderUnstyledClasses.thumb} {
     position: absolute;
+    margin-left: -6px;
+    margin-top: -6px;
     width: 16px;
     height: 16px;
-    margin-left: -6px;
-    margin-top: -5px;
     box-sizing: border-box;
     border-radius: 50%;
     outline: 0;
-    border: 2px solid currentColor;
-    background-color: #fff;
-
-    :hover, & .${sliderUnstyledClasses.focusVisible} {
-      //box-shadow: 
-    }
-
-    & .${sliderUnstyledClasses.active} {
-      //box-shadow: 0 0 0 0.25rem 
-    }
+    cursor: grab;
+    border: ${getOverridableStyle('Slider', 'thumbBorder', ({ theme, variant = 'primary' }) => `1px solid ${theme.colors[variant]}`)};
+    background-color: ${getOverridableStyle('Slider', 'thumbBackgroundColor', ({ theme }) => theme.colors.text)};
   }
 `

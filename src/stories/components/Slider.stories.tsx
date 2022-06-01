@@ -9,11 +9,30 @@ export default {
   argTypes: {},
 }
 
+// function ValueLabelComponent(props: {
+//   children: React.ReactElement;
+//   value: number;
+// }) {
+//   const { children, value } = props
+//
+//   return (
+//     <Tooltip enterTouchDelay={0} placement="top" title={value}>
+//       {children}
+//     </Tooltip>
+//   )
+// }
+
 export const Variants = () => (
   <Box width={'300px'} p={'16px'} height={'100px'}>
     {
       Object.values(variants).map((v, index) => (
-        <Slider variant={v} key={v} defaultValue={(index + 1) * 10} />
+        <Slider
+          valueLabelDisplay={'auto'}
+          variant={v}
+          key={v}
+          defaultValue={(index + 1) * 10}
+          tooltip
+        />
       ))
     }
   </Box>

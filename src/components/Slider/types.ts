@@ -4,6 +4,9 @@ import { DefaultTheme } from 'styled-components'
 
 export interface SliderProps extends SliderUnstyledProps {
   variant?: Variants
+
+  // Show tooltip when hover on thumb, default `true`
+  tooltip?: boolean
 }
 
 export interface StyledSliderProps extends SliderProps {
@@ -11,7 +14,7 @@ export interface StyledSliderProps extends SliderProps {
 }
 
 export type SliderOverridableCSSProperties =
-  | PickCSSProperties<'height' | 'opacity' | 'padding'>
+  | PickCSSProperties<'opacity'>
   | 'trackColor'
   | 'trackHeight'
   | 'trackBorderRadius'
@@ -28,3 +31,5 @@ export type SliderOverridableCSSProperties =
   | 'markLabelTop'
   | 'markLabelColor'
   | 'markLabelActiveColor'
+  | 'thumbBorder'
+  | 'thumbBackgroundColor'
