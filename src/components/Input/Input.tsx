@@ -5,8 +5,6 @@ import { scales } from '../../types'
 import { getOverridableStyle } from '../../utils'
 import { InputUnstyled, inputUnstyledClasses } from '@mui/base'
 
-const getBoxShadow = getOverridableStyle('Input', 'boxShadow', () => 'none')
-
 const getHeight = getOverridableStyle(
   'Input',
   'height', ({ scale = scales.M }) => (
@@ -23,16 +21,12 @@ const getBorderRadius = getOverridableStyle(
   'borderRadius',
   ({ scale = scales.M }) => (
     {
-      [scales.S]: '8px',
-      [scales.M]: '8px',
-      [scales.L]: '8px',
+      [scales.S]: '4px',
+      [scales.M]: '5px',
+      [scales.L]: '6px',
     }[scale]
   )
 )
-
-const getBackground = getOverridableStyle('Input', 'background', ({ theme }) => theme.colors.backgroundSecondary)
-
-const getFontWeight = getOverridableStyle('Input', 'fontWeight', () => '600')
 
 const getFontSize = getOverridableStyle(
   'Input',
@@ -41,73 +35,61 @@ const getFontSize = getOverridableStyle(
     {
       [scales.S]: '14px',
       [scales.M]: '16px',
-      [scales.L]: '16px',
+      [scales.L]: '18px',
     }[scale]
   )
 )
 
-const getOutline = getOverridableStyle('Input', 'outline', () => '0')
-
-const getPadding = getOverridableStyle('Input', 'padding', () => '0 8px')
-
-const getBorder = getOverridableStyle(
-  'Input',
-  'border',
-  ({ theme, variant = 'primary', disabled }) => !disabled ? `2px solid ${theme.colors[variant]}` : 'none'
-)
-
 const getColors = getOverridableStyle('Input', 'color', ({ theme }) => theme.colors.text)
 
-const getPlaceholderColor = getOverridableStyle('Input', 'placeholderColor', ({ theme }) => theme.colors.textDisabled)
-
 const getFocusBoxShadow = getOverridableStyle('Input', 'focusBoxShadow', ({ theme, variant = 'primary' }) => `0px 0px 10px 1px ${theme.colors[variant]}`)
-
-const getFocusBorder = getOverridableStyle('Input', 'focusBorder', ({ theme, variant = 'primary' }) => `2px solid ${theme.colors[variant]}cc`)
 
 const StyledInput = styled(InputUnstyled)<InputProps>`
   display: flex;
   align-items: center;
-
-  background: ${getBackground};
+  
   border-radius: ${getBorderRadius};
-  box-shadow: ${getBoxShadow};
-  border: ${getBorder};
   color: ${getColors};
   font-size: ${getFontSize};
-  font-weight: ${getFontWeight};
-  font-family: inherit;
   height: ${getHeight};
-  outline: ${getOutline};
-  padding: ${getPadding};
+
+  border: ${getOverridableStyle('Input', 'border', ({ theme, variant = 'primary', disabled }) => !disabled ? `1px solid ${theme.colors[variant]}` : 'none')};
+  box-shadow: ${getOverridableStyle('Input', 'boxShadow', 'none')};
+  background: ${getOverridableStyle('Input', 'background', ({ theme }) => theme.colors.backgroundSecondary)};
+  outline: ${getOverridableStyle('Input', 'outline', '0')};
+  font-weight: ${getOverridableStyle('Input', 'fontWeight', '500')};
+  padding: ${getOverridableStyle('Input', 'padding', '0 8px')};
+
+  font-family: ${({ theme }) => theme.fontFamilies.common};
   padding-right: ${({ suffixGap }) => suffixGap};
-
-  &::placeholder {
-    color: ${getPlaceholderColor};
-  }
-
-  &:disabled {
-    background-color: ${({ theme }) => theme.colors.backgroundDisabled};
+  
+  &.${inputUnstyledClasses.disabled} {
     box-shadow: none;
+    background-color: ${({ theme }) => theme.colors.backgroundDisabled};
     color: ${({ theme }) => theme.colors.textDisabled};
-    cursor: not-allowed;
-  }
 
-  &:focus:not(:disabled) {
-    border: ${getFocusBorder};
-    box-shadow: ${getFocusBoxShadow};
+    & > * {
+      cursor: not-allowed;
+    }
   }
 
   &.${inputUnstyledClasses.focused} {
-    border: ${getFocusBorder};
+    border: ${getOverridableStyle('Input', 'focusBorder', ({ theme, variant = 'primary' }) => `1px solid ${theme.colors[variant]}cc`)};
     box-shadow: ${getFocusBoxShadow};
+  }
+  
+  &.${inputUnstyledClasses.adornedEnd} {
+    // disable click effect of Button components 
+    button:active:not(:disabled) {
+      transform: none;
+    }
   }
 
   input {
     background: transparent;
-    border: ${getBorder};
     border: none;
     flex-grow: 1;
-    font-weight: ${getFontWeight};
+    font-weight: ${getOverridableStyle('Input', 'fontWeight', '500')};
     color: ${getColors};
     font-family: inherit;
     font-size: ${getFontSize};
@@ -115,7 +97,10 @@ const StyledInput = styled(InputUnstyled)<InputProps>`
     &:focus-visible {
       outline: none;
     }
-
+    
+    &::placeholder {
+      color: ${getOverridableStyle('Input', 'placeholderColor', ({ theme }) => theme.colors.textDisabled)};
+    }
   }
 
   input::-webkit-outer-spin-button,
