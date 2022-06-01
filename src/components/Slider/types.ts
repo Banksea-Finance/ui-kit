@@ -16,6 +16,7 @@ export interface StyledSliderProps extends SliderProps {
 export type SliderOverridableCSSProperties =
   | PickCSSProperties<'opacity'>
   | 'trackColor'
+  | 'trackDisabledColor'
   | 'trackHeight'
   | 'trackBorderRadius'
   | 'railColor'

@@ -18,10 +18,14 @@ export const StyledSlider = styled(SliderUnstyled)<StyledSliderProps>`
     opacity: 1;
   }
 
-  & .${sliderUnstyledClasses.disabled} {
-    pointer-events: none;
-    cursor: default;
-    color: #bdbdbd;
+  &.${sliderUnstyledClasses.disabled} {
+    &, .${sliderUnstyledClasses.thumb} {
+      cursor: not-allowed;
+    }
+
+    & .${sliderUnstyledClasses.track} {
+      background-color: ${getOverridableStyle('Slider', 'trackDisabledColor', ({ theme }) => theme.colors.textDisabled)};
+    }
   }
 
   & .${sliderUnstyledClasses.rail} {

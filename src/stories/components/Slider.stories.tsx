@@ -37,6 +37,12 @@ export const Variants = () => (
   </Box>
 )
 
+export const Disabled = () => (
+  <Box width={'300px'} p={'16px'} height={'100px'}>
+    <Slider defaultValue={50} step={10} marks disabled />
+  </Box>
+)
+
 export const Discrete = () => (
   <Box width={'300px'} p={'16px'} height={'100px'}>
     <Slider defaultValue={50} step={10} marks />
