@@ -4,6 +4,7 @@ import { StyledTextProps, TextOverridableCSSProperties } from '../components/Tex
 import { ButtonMenuOverridableCSSProperties, StyledButtonMenuProps } from '../components/ButtonMenu'
 import { InputOverridableCSSProperties, StyledInputProps } from '../components/Input'
 import { StyledTagProps, TagOverridableCSSProperties } from '../components/Tag'
+import { SliderOverridableCSSProperties, StyledSliderProps } from '../components/Slider'
 
 import * as components from '../components'
 import { CSSProperties, DefaultTheme } from 'styled-components'
@@ -46,6 +47,10 @@ export type OverridablePropertiesByComponent = OverridablePropertiesByComponentC
   Tag: {
     properties: TagOverridableCSSProperties,
     props: StyledTagProps
+  },
+  Slider: {
+    properties: SliderOverridableCSSProperties,
+    props: StyledSliderProps
   }
 }>
 

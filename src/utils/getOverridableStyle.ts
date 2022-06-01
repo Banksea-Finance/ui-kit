@@ -11,13 +11,17 @@ type ReturnType<ComponentName extends OverridableComponentNames, Property extend
 type GetPropsByComponentName<ComponentName extends OverridableComponentNames> =
   OverridablePropertiesByComponent[ComponentName]['props']
 
+type Fallback<ComponentName extends OverridableComponentNames, Property extends GetPropertiesByComponentName<ComponentName>> =
+  | ((props: GetPropsByComponentName<ComponentName>) => ReturnType<ComponentName, Property>)
+  | ReturnType<ComponentName, Property>
+
 export function getOverridableStyle<
   ComponentName extends OverridableComponentNames,
   Property extends GetPropertiesByComponentName<ComponentName>
 >(
   componentName: ComponentName,
   property: Property,
-  fallback: (props: GetPropsByComponentName<ComponentName>) => ReturnType<ComponentName, Property>
+  fallback: Fallback<ComponentName, Property>
 ): (props: OverridablePropertiesByComponent[ComponentName]['props']) => ReturnType<ComponentName, Property> {
   // @ts-ignore
   return props => {
@@ -32,6 +36,10 @@ export function getOverridableStyle<
       }
     }
 
-    return fallback(props)
+    if (typeof fallback === 'function') {
+      return fallback(props)
+    } else {
+      return fallback
+    }
   }
 }

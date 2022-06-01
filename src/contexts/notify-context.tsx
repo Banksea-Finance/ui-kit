@@ -7,7 +7,7 @@ import { Notification, NotificationProps } from '../components/Notification/Noti
 export type OpenNotifyProps = Omit<Partial<OpenConfig>, 'content'> & NotificationProps
 
 export interface UseNotify extends Omit<NotificationAPI, 'open'> {
-  open: (props: OpenNotifyProps) => void
+  notify: (props: OpenNotifyProps) => void
 }
 
 const NotifyContext = React.createContext<NotificationAPI>(undefined as any)
@@ -31,7 +31,7 @@ const NotifyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =
 const useNotify = (): UseNotify => {
   const { open: _open, close, destroy } = useContext(NotifyContext)
 
-  const open = useCallback((props: OpenNotifyProps) => {
+  const notify = useCallback((props: OpenNotifyProps) => {
     const { title, variant, description, ...rest } = props
 
     _open({
@@ -41,7 +41,7 @@ const useNotify = (): UseNotify => {
   }, [_open])
 
   return {
-    open,
+    notify,
     close,
     destroy
   }
