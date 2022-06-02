@@ -2,7 +2,7 @@ import React, { Children, cloneElement, ReactElement } from 'react'
 import StyledButtonMenu from './StyledButtonMenu'
 import { ButtonMenuProps } from './types'
 import ButtonMenuItem from './ButtonMenuItem'
-import { buttonVariant } from '../Button/types'
+import { buttonVariants } from '../Button/types'
 import { scales } from '../../types'
 
 class ButtonMenu extends React.Component<ButtonMenuProps, any> {
@@ -14,7 +14,7 @@ class ButtonMenu extends React.Component<ButtonMenuProps, any> {
       activeKey,
       activeIndex,
       scale = scales.M,
-      variant = buttonVariant.primary,
+      variant = buttonVariants.primary,
       onItemClick,
       style,
       children,

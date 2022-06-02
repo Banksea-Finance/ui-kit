@@ -1,32 +1,39 @@
 import styled from 'styled-components'
 import { space, typography, variant } from 'styled-system'
-import { Colors } from '../../types/colors'
 import { scaleVariants } from './theme'
 import { StyledTagProps } from './types'
 import { getOverridableStyle } from '../../utils'
+import { Box } from '../Box'
 
-const getColor = getOverridableStyle('Tag', 'color', ({ outline, theme, variant = 'primary' }) => {
-  return outline ? theme.colors[theme.colors[variant] as keyof Colors] : '#fff'
+const getColor = getOverridableStyle('Tag', 'color', ({ outlined, theme, variant = 'primary', gradient }) => {
+  if (gradient) return theme.colors.text
+  return outlined ? theme.colors[variant] : theme.colors.text
 })
 
-const getBackgroundColor = getOverridableStyle('Tag', 'backgroundColor', ({ outline, theme, variant = 'primary' }) => {
-  return outline ? theme.colors.background : theme.colors[variant]
+const getBackground = getOverridableStyle('Tag', 'background', ({ gradient, outlined, theme, variant = 'primary' }) => {
+  if (gradient) {
+    if (gradient === true) return theme.colors.gradient
+
+    return gradient
+  }
+
+  return outlined ? theme.colors.backgroundSecondary : theme.colors[variant]
 })
 
-const getBorder = getOverridableStyle('Tag', 'border', ({ outline, theme, variant = 'primary' }) => {
-  return outline ? `2px solid ${theme.colors[theme.colors[variant] as keyof Colors]}` : ''
+const getBorder = getOverridableStyle('Tag', 'border', ({ outlined, theme, variant = 'primary' }) => {
+  return outlined ? `1px solid ${theme.colors[variant]}` : ''
 })
 
-export const StyledTag = styled.div<StyledTagProps>`
+export const StyledTag = styled(Box)<StyledTagProps>`
   align-items: center;
-  border-radius: 16px;
   display: inline-flex;
   font-weight: 500;
   white-space: nowrap;
   width: fit-content;
+  font-family: ${({ theme }) => theme.fontFamilies.common};
 
   color: ${getColor};
-  background-color: ${getBackgroundColor};
+  background: ${getBackground};
   border: ${getBorder};
   
   & > svg {

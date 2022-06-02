@@ -49,19 +49,21 @@ const DialogHeader: React.FC<DialogProps> = ({ titlePrefix, title, variant, clos
     <Flex
       jc={'space-between'}
       ai={'center'}
-      style={{ borderBottom: '1px solid #909090', paddingBottom: '8px' }}
+      pb={'8px'}
+      borderBottom={'1px solid #909090'}
     >
-      <Flex ai={'center'}>
+      <Flex ai={'center'} mr={'16px'}>
         {titlePrefix}
         <Text fontSize={'20px'} important fontWeight={700} color={variant}>
           {title}
         </Text>
       </Flex>
+
       {
         closeable && (
-          <div style={{ cursor: 'pointer' }} onClick={handleClose}>
+          <Box style={{ cursor: 'pointer' }} onClick={handleClose}>
             <CloseSvg />
-          </div>
+          </Box>
         )
       }
     </Flex>

@@ -1,5 +1,5 @@
 import { scales } from '../../types'
-import { ButtonVariant, buttonVariant } from './types'
+import { ButtonVariants, buttonVariants } from './types'
 
 export const scaleVariants = {
   [scales.S]: {
@@ -19,47 +19,47 @@ export const scaleVariants = {
   }
 }
 
-export const styleVariants: Record<ButtonVariant, any> = {
-  [buttonVariant.primary]: {
+export const styleVariants: Record<ButtonVariants, any> = {
+  [buttonVariants.primary]: {
     color: 'textContrary'
   },
-  [buttonVariant.primaryContrary]: {
+  [buttonVariants.primaryContrary]: {
     color: 'textContrary',
   },
-  [buttonVariant.secondary]: {
+  [buttonVariants.secondary]: {
     borderColor: 'primary',
     color: 'textContrary',
     ':disabled': {
       backgroundColor: 'transparent',
     },
   },
-  [buttonVariant.tertiary]: {
+  [buttonVariants.tertiary]: {
     boxShadow: 'none',
     color: 'white',
     border: '1px #cdcdcd solid',
   },
-  [buttonVariant.subtle]: {
+  [buttonVariants.subtle]: {
     color: 'white',
     boxShadow: 'none',
   },
-  [buttonVariant.danger]: {
+  [buttonVariants.danger]: {
     color: 'white',
   },
-  [buttonVariant.success]: {
+  [buttonVariants.success]: {
     color: 'white',
   },
-  [buttonVariant.disabled]: {
+  [buttonVariants.disabled]: {
     color: 'white',
   },
-  [buttonVariant.warning]: {
+  [buttonVariants.warning]: {
     color: 'white',
   },
-  [buttonVariant.text]: {
+  [buttonVariants.text]: {
     backgroundColor: 'transparent',
     color: 'primary',
     boxShadow: 'none',
   },
-  [buttonVariant.outlined]: {
+  [buttonVariants.outlined]: {
     color: 'primary',
     fontWeight: 'bold'
   }

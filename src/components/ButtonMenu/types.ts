@@ -1,4 +1,4 @@
-import { BaseButtonProps, ButtonVariant } from '../Button/types'
+import { BaseButtonProps, ButtonVariants } from '../Button/types'
 import React, { HTMLAttributes } from 'react'
 import { SpaceProps } from 'styled-system'
 import { CSSProperties } from 'styled-components'
@@ -10,7 +10,7 @@ export interface ButtonMenuItemProps extends BaseButtonProps {
 }
 
 export interface ButtonMenuProps extends HTMLAttributes<HTMLDivElement>, SpaceProps {
-  variant?:/* Extract<'primary' | 'secondary',*/ ButtonVariant/*>*/
+  variant?:/* Extract<'primary' | 'secondary',*/ ButtonVariants/*>*/
   activeIndex?: number
   activeKey?: string
   onItemClick?: (args: { index: number; key?: string }) => void

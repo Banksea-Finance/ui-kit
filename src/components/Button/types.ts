@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 import { LayoutProps, SpaceProps, TypographyProps } from 'styled-system'
 import { PickCSSProperties, PropsWithTheme, Scales, variants } from '../../types'
 
-export const buttonVariant = {
+export const buttonVariants = {
   ...variants,
   text: 'text',
   outlined: 'outlined'
 } as const
 
-export type ButtonVariant = keyof typeof buttonVariant
+export type ButtonVariants = keyof typeof buttonVariants
 
 /**
  * @see https://www.benmvp.com/blog/polymorphic-react-components-typescript/
@@ -31,7 +31,7 @@ export interface BaseButtonProps extends LayoutProps, SpaceProps, TypographyProp
   external?: boolean
   isLoading?: boolean
   scale?: Scales
-  variant?: ButtonVariant
+  variant?: ButtonVariants
   disabled?: boolean
   startIcon?: ReactNode
   endIcon?: ReactNode

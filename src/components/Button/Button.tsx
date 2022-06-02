@@ -1,7 +1,7 @@
 import React, { cloneElement, ElementType, isValidElement } from 'react'
 import getExternalLinkProps from '../../utils/getExternalLinkProps'
 import StyledButton from './StyledButton'
-import { ButtonProps, buttonVariant } from './types'
+import { ButtonProps, buttonVariants } from './types'
 import { Flex } from '../Box'
 import { scales } from '../../types'
 import { DotLoader } from 'react-spinners'
@@ -43,7 +43,7 @@ const Button = <E extends ElementType = 'button'>(props: ButtonProps<E>): JSX.El
 Button.defaultProps = {
   isLoading: false,
   external: false,
-  variant: buttonVariant.primary,
+  variant: buttonVariants.primary,
   letterSpacing: '1px',
   disabled: false,
   scale: scales.M
