@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Card, CardRibbon, Colors, Grid, variants } from '../../index'
+import { Card, CardRibbon, Colors, Grid, Variants, variants } from '../../index'
+import { StyledCardRibbonProps } from '../../components/Card/types'
 
 export default {
   title: 'Components/Card',
@@ -59,14 +60,14 @@ const PlainCardTemplate = (props: any) => (
 )
 
 const CardWithRibbonTemplate = (props: any) => {
-  const CardWithRibbonByVariant = ({ variant }: { variant: keyof Colors }) => (
+  const CardWithRibbonByVariant = ({ variant, position }: Partial<StyledCardRibbonProps>) => (
     <Card
       width={'300px'}
       height={'188px'}
       justifyContent={'center'}
       alignItems={'center'}
       color={'white'}
-      ribbon={<CardRibbon text={'Ribbon'} variantColor={variant} />}
+      ribbon={<CardRibbon text={'Ribbon'} variant={variant} position={position} />}
       {...props}
     >
       Card
@@ -80,6 +81,14 @@ const CardWithRibbonTemplate = (props: any) => {
       <CardWithRibbonByVariant variant={'tertiary'} />
       <CardWithRibbonByVariant variant={'danger'} />
       <CardWithRibbonByVariant variant={'success'} />
+      <CardWithRibbonByVariant variant={'warning'} />
+
+      <CardWithRibbonByVariant variant={'primary'} position={'topLeft'} />
+      <CardWithRibbonByVariant variant={'secondary'} position={'topLeft'} />
+      <CardWithRibbonByVariant variant={'tertiary'} position={'topLeft'} />
+      <CardWithRibbonByVariant variant={'danger'} position={'topLeft'} />
+      <CardWithRibbonByVariant variant={'success'} position={'topLeft'} />
+      <CardWithRibbonByVariant variant={'warning'} position={'topLeft'} />
     </Grid>
   )
 }
@@ -127,7 +136,7 @@ const ActiveOnHoverTemplate = (props: any) => (
   </Grid>
 )
 
-export const Variants = VariantsTemplate.bind({})
+export const _Variants = VariantsTemplate.bind({})
 export const PlainCard = PlainCardTemplate.bind({})
 export const CardWithRibbon = CardWithRibbonTemplate.bind({})
 export const ActiveOnHover = ActiveOnHoverTemplate.bind({})

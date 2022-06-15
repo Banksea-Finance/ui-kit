@@ -2,20 +2,15 @@ import React, { CSSProperties, HTMLAttributes } from 'react'
 import { DisplayProps, FlexboxProps, LayoutProps, OverflowProps, SpaceProps, TypographyProps } from 'styled-system'
 import { Colors, PickCSSProperties, PropsWithTheme, Variants } from '../../types'
 import { TextProps } from '../Text'
+import { DefaultTheme } from 'styled-components'
+
+export type CardRibbonPosition = 'topLeft' | 'topRight'
 
 export interface CardRibbonProps {
-  variantColor?: keyof Colors
+  variant?: Variants
   text: string
   textStyle?: TextProps
-}
-
-export type CardTheme = {
-  background: string
-  boxShadowActive: string
-  boxShadowSuccess: string
-  boxShadowWarning: string
-  cardHeaderBackground: string
-  dropShadow: string
+  position?: CardRibbonPosition
 }
 
 export interface CardProps
@@ -39,4 +34,7 @@ export interface CardProps
 
 export interface StyledCardProps extends CardProps, PropsWithTheme {}
 
+export interface StyledCardRibbonProps extends Pick<CardRibbonProps, 'variant' | 'position'> {
+  theme: DefaultTheme
+}
 export type CardOverridableCSSProperties = PickCSSProperties<'boxShadow' | 'backgroundColor' | 'border' | 'borderRadius'>

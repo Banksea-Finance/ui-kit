@@ -1,28 +1,42 @@
 import React from 'react'
-import styled, { DefaultTheme } from 'styled-components'
-import { CardRibbonProps } from './types'
+import styled from 'styled-components'
+import { CardRibbonPosition, CardRibbonProps, StyledCardRibbonProps } from './types'
 import { Text } from '../Text'
+import { variants } from '../../types'
+import { variant } from 'styled-system'
 
-interface StyledCardRibbonProps extends CardRibbonProps {
-  theme: DefaultTheme
+const positionVariants: Record<CardRibbonPosition, any> = {
+  topLeft: {
+    'transform': 'translateX(-30%) translateY(0%) rotate(-45deg)',
+    'transform-origin': 'top right',
+    'top': '0',
+    'left': '0'
+  },
+  topRight: {
+    'transform': 'translateX(30%) translateY(0%) rotate(45deg)',
+    'transform-origin': 'top left',
+    'top': '0',
+    'right': '0'
+  }
 }
 
-const StyledCardRibbon = styled.div<Partial<StyledCardRibbonProps>>`
-  background-color: ${({ variantColor = 'secondary', theme }) => theme.colors[variantColor]};
+const StyledCardRibbon = styled.div<StyledCardRibbonProps>`
+  background-color: ${({ variant = variants.primary, theme }) => theme.colors[variant]};
   color: white;
   margin: 0;
   padding: 8px 0;
   position: absolute;
-  right: 0;
-  top: 0;
   text-align: center;
-  transform: translateX(30%) translateY(0%) rotate(45deg);
-  transform-origin: top left;
   width: 96px;
-
+  
+  ${variant({
+    prop: 'position',
+    variants: positionVariants
+  })}
+  
   &:before,
   &:after {
-    background-color: ${({ variantColor = 'secondary', theme }) => theme.colors[variantColor]};
+    background-color: ${({ variant = variants.primary, theme }) => theme.colors[variant]};
     content: "";
     height: 100%;
     margin: 0 -1px; /* Removes tiny gap */
@@ -47,9 +61,9 @@ const StyledCardRibbon = styled.div<Partial<StyledCardRibbonProps>>`
   }
 `
 
-const CardRibbon: React.FC<CardRibbonProps> = ({ variantColor, text, textStyle }) => {
+const CardRibbon: React.FC<CardRibbonProps> = ({ variant, text, textStyle, position = 'topRight' }) => {
   return (
-    <StyledCardRibbon variantColor={variantColor}>
+    <StyledCardRibbon variant={variant} position={position}>
       <Text {...textStyle}>{text}</Text>
     </StyledCardRibbon>
   )
