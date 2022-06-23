@@ -28,7 +28,10 @@ export { Skeleton } from './Skeleton'
 export type { SkeletonProps } from './Skeleton'
 
 export { Slider } from './Slider'
-export type { SliderOverridableCSSProperties, SliderProps } from './Slider'
+export type { SliderProps, SliderOverridableCSSProperties } from './Slider'
+
+export { Table } from './Table'
+export type { TableProps, TableOverridableCSSProperties, ColumnsType } from './Table'
 
 export { Tabs } from './Tabs'
 export type { TabsProps, TabPaneProps } from './Tabs'

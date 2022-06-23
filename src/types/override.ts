@@ -5,6 +5,7 @@ import { ButtonMenuOverridableCSSProperties, StyledButtonMenuProps } from '../co
 import { InputOverridableCSSProperties, StyledInputProps } from '../components/Input'
 import { StyledTagProps, TagOverridableCSSProperties } from '../components/Tag'
 import { SliderOverridableCSSProperties, StyledSliderProps } from '../components/Slider'
+import { TableOverridableCSSProperties, StyledTableProps } from '../components/Table'
 
 import * as components from '../components'
 import { CSSProperties, DefaultTheme } from 'styled-components'
@@ -17,6 +18,10 @@ export type PropsWithTheme = {
   theme: DefaultTheme
 }
 
+// type OverridablePropertiesByComponentConstraint<T extends Partial<Record<ComponentNames, {
+//   properties: keyof CSSProperties | string | Record<string, any>
+//   props: PropsWithTheme
+// }>>> = T
 type OverridablePropertiesByComponentConstraint<T extends Partial<Record<ComponentNames,
   {
     properties: keyof CSSProperties | string
@@ -48,6 +53,10 @@ export type OverridablePropertiesByComponent = OverridablePropertiesByComponentC
     properties: TagOverridableCSSProperties,
     props: StyledTagProps
   },
+  Table: {
+    properties: keyof TableOverridableCSSProperties,
+    props: StyledTableProps
+  },
   Slider: {
     properties: SliderOverridableCSSProperties,
     props: StyledSliderProps
@@ -60,6 +69,15 @@ export type StyleBuilder<Key extends (keyof CSSProperties | string), ComponentPr
 
 export type ComponentStylesOverride = {
   [ComponentName in keyof OverridablePropertiesByComponent]?: {
+    /*[Property in (
+      OverridablePropertiesByComponent[ComponentName]['properties'] extends string
+        ? OverridablePropertiesByComponent[ComponentName]['properties']
+        : (
+          keyof OverridablePropertiesByComponent[ComponentName]['properties'] extends string
+            ? keyof OverridablePropertiesByComponent[ComponentName]['properties']
+            : never
+          )
+      )]?: StyleBuilder<Property,*/
     [Property in OverridablePropertiesByComponent[ComponentName]['properties']]?: StyleBuilder<Property,
       OverridablePropertiesByComponent[ComponentName]['props']>
   }
