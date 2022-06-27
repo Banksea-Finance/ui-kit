@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, ColumnsType, Table } from '../../components'
+import { Box, ColumnsType, Table, Text } from '../../components'
 
 export default {
   title: 'Components/Table',
@@ -37,6 +37,14 @@ const columns: ColumnsType<DataType> = [
     align: 'center'
   },
   {
+    title: 'Phone',
+    dataIndex: 'phone',
+    key: 'phone',
+    render: value => (<Text color={'green'}>{value}</Text>),
+    width: 200,
+    align: 'center'
+  },
+  {
     title: 'Operations',
     dataIndex: '',
     key: 'operations',
@@ -47,21 +55,34 @@ const columns: ColumnsType<DataType> = [
 ]
 
 const data = [
-  { name: 'Jack', age: 28, address: 'some where', key: '1' },
-  { name: 'Rose', age: 36, address: 'some where', key: '2' },
-  { name: 'Rose', age: 123, address: 'some where', key: '3' },
-  { name: 'Rose', age: 234, address: 'some where', key: '4' },
-  { name: 'Rose', age: 33456, address: 'some where', key: '5' },
-  { name: 'Rose', age: 456, address: 'some where', key: '6' },
-  { name: 'Rose', age: 567, address: 'some where', key: '7' },
-  { name: 'Rose', age: 678, address: 'some where', key: '8' },
-  { name: 'Rose', age: 789, address: 'some where', key: '9' },
+  { name: 'Jack', age: 28, address: 'some where', key: '1', phone: '123123123' },
+  { name: 'Rose', age: 36, address: 'some where', key: '2', phone: '123123123' },
+  { name: 'Rose', age: 123, address: 'some where', key: '3', phone: '123123123' },
+  { name: 'Rose', age: 234, address: 'some where', key: '4', phone: '123123123' },
+  { name: 'Rose', age: 33456, address: 'some where', key: '5', phone: '123123123' },
+  { name: 'Rose', age: 456, address: 'some where', key: '6', phone: '123123123' },
+  { name: 'Rose', age: 567, address: 'some where', key: '7', phone: '123123123' },
+  { name: 'Rose', age: 678, address: 'some where', key: '8', phone: '123123123' },
+  { name: 'Rose', age: 789, address: 'some where', key: '9', phone: '123123123' },
 ]
 
 export const Default = () => {
   return (
     <Box p={'32px'}>
       <Table columns={columns as any} data={data} />
+    </Box>
+  )
+}
+
+export const CustomRowAndHeadStyle = () => {
+  return (
+    <Box p={'32px'}>
+      <Table
+        columns={columns as any}
+        data={data}
+        rowStyle={{ height: '48px', color: 'pink' }}
+        headStyle={{ color: 'orange' }}
+      />
     </Box>
   )
 }
