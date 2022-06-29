@@ -20,6 +20,10 @@ const getRowBackgrounds = ({ rowStyle }: StyledTableProps) => {
 export const StyledTable = styled(Table)<StyledTableProps>`
   font-family: ${({ theme }) => theme.fontFamilies.common};
 
+  table {
+    width: 100%;
+  }
+  
   .rc-table-cell {
     color: ${({ theme }) => theme.colors.text};
     vertical-align: middle;

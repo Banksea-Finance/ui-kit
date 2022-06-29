@@ -33,7 +33,6 @@ const columns: ColumnsType<DataType> = [
     title: 'Address',
     dataIndex: 'address',
     key: 'address',
-    width: 200,
     align: 'center'
   },
   {
@@ -68,7 +67,7 @@ const data = [
 
 export const Default = () => {
   return (
-    <Box p={'32px'}>
+    <Box p={'32px'} width={'800px'} border={'1px solid red'}>
       <Table columns={columns as any} data={data} />
     </Box>
   )
@@ -76,7 +75,7 @@ export const Default = () => {
 
 export const CustomRowAndHeadStyle = () => {
   return (
-    <Box p={'32px'}>
+    <Box p={'32px'} width={'800px'} border={'1px solid red'}>
       <Table
         columns={columns as any}
         data={data}
@@ -89,7 +88,7 @@ export const CustomRowAndHeadStyle = () => {
 
 export const CustomStripe = () => {
   return (
-    <Box p={'32px'}>
+    <Box p={'32px'} width={'800px'} border={'1px solid red'}>
       <Table
         columns={columns as any}
         data={data}
