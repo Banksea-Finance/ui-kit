@@ -24,6 +24,10 @@ export type { InputProps, InputOverridableCSSProperties } from './Input'
 
 export { Notification } from './Notification'
 
+export { Pagination } from './Pagination'
+
+export { Select } from './Select'
+
 export { Skeleton } from './Skeleton'
 export type { SkeletonProps } from './Skeleton'
 
