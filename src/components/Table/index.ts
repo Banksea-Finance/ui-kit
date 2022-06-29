@@ -1,2 +1,2 @@
-export { StyledTable as Table } from './StyledTable'
+export { Table } from './Table'
 export type { TableProps, StyledTableProps, TableOverridableCSSProperties, ColumnsType } from './types'

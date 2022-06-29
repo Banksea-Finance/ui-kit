@@ -1,5 +1,5 @@
 import { TableProps as RcTableProps } from 'rc-table/lib/Table'
-import { ColumnsType } from 'rc-table/lib/interface'
+import { ColumnGroupType, ColumnType } from 'rc-table/lib/interface'
 import { CSSProperties, DefaultTheme } from 'styled-components'
 
 type TableRowBackground = Array<CSSProperties['background']>
@@ -12,7 +12,23 @@ type TableOverridableCSSProperties = {
   rowHoverBackground: CSSProperties['background']
 }
 
-interface TableProps extends RcTableProps {
+interface StyledTableProps<RecordType> extends TableProps<RecordType> {
+  theme: DefaultTheme
+}
+
+interface MinWidthConfigurable {
+  minWidth?: string
+}
+
+interface AdvancedColumnType<RecordType> extends ColumnType<RecordType>, MinWidthConfigurable {}
+
+interface AdvancedColumnGroupType<RecordType> extends ColumnGroupType<RecordType> {
+  children: ColumnsType<RecordType>;
+}
+
+type ColumnsType<RecordType = unknown> = readonly (AdvancedColumnGroupType<RecordType> | AdvancedColumnType<RecordType>)[];
+
+interface TableProps<RecordType> extends RcTableProps<RecordType> {
   headStyle?: Partial<Pick<CSSProperties, 'height' | 'background' | 'color'>>
 
   rowStyle?: {
@@ -21,10 +37,8 @@ interface TableProps extends RcTableProps {
     color?: CSSProperties['color'],
     hoverBackground?: CSSProperties['background']
   }
-}
 
-interface StyledTableProps extends TableProps {
-  theme: DefaultTheme
+  columns?: ColumnsType<RecordType>;
 }
 
 export type {

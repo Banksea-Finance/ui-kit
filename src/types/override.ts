@@ -55,7 +55,7 @@ export type OverridablePropertiesByComponent = OverridablePropertiesByComponentC
   },
   Table: {
     properties: keyof TableOverridableCSSProperties,
-    props: StyledTableProps
+    props: StyledTableProps<any>
   },
   Slider: {
     properties: SliderOverridableCSSProperties,

@@ -19,14 +19,14 @@ const columns: ColumnsType<DataType> = [
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    width: 100,
+    minWidth: '120px',
     align: 'center',
   },
   {
     title: 'Age',
     dataIndex: 'age',
     key: 'age',
-    width: 100,
+    minWidth: '80px',
     align: 'center'
   },
   {
@@ -40,7 +40,14 @@ const columns: ColumnsType<DataType> = [
     dataIndex: 'phone',
     key: 'phone',
     render: value => (<Text color={'green'}>{value}</Text>),
-    width: 200,
+    width: 100,
+    align: 'center'
+  },
+  {
+    title: 'Birthday',
+    dataIndex: 'birthday',
+    key: 'birthday',
+    width: 100,
     align: 'center'
   },
   {
@@ -54,15 +61,15 @@ const columns: ColumnsType<DataType> = [
 ]
 
 const data = [
-  { name: 'Jack', age: 28, address: 'some where', key: '1', phone: '123123123' },
-  { name: 'Rose', age: 36, address: 'some where', key: '2', phone: '123123123' },
-  { name: 'Rose', age: 123, address: 'some where', key: '3', phone: '123123123' },
-  { name: 'Rose', age: 234, address: 'some where', key: '4', phone: '123123123' },
-  { name: 'Rose', age: 33456, address: 'some where', key: '5', phone: '123123123' },
-  { name: 'Rose', age: 456, address: 'some where', key: '6', phone: '123123123' },
-  { name: 'Rose', age: 567, address: 'some where', key: '7', phone: '123123123' },
-  { name: 'Rose', age: 678, address: 'some where', key: '8', phone: '123123123' },
-  { name: 'Rose', age: 789, address: 'some where', key: '9', phone: '123123123' },
+  { name: 'Jack', age: 28, address: 'some where', key: '1', phone: '123123123', birthday: '2000/01/01' },
+  { name: 'Rose', age: 36, address: 'some where', key: '2', phone: '123123123', birthday: '2000/01/01' },
+  { name: 'Rose', age: 123, address: 'some where', key: '3', phone: '123123123', birthday: '2000/01/01' },
+  { name: 'Rose', age: 234, address: 'some where', key: '4', phone: '123123123', birthday: '2000/01/01' },
+  { name: 'Rose', age: 33456, address: 'some where', key: '5', phone: '123123123', birthday: '2000/01/01' },
+  { name: 'Rose', age: 456, address: 'some where', key: '6', phone: '123123123', birthday: '2000/01/01' },
+  { name: 'Rose', age: 567, address: 'some where', key: '7', phone: '123123123', birthday: '2000/01/01' },
+  { name: 'Rose', age: 678, address: 'some where', key: '8', phone: '123123123', birthday: '2000/01/01' },
+  { name: 'Rose', age: 789, address: 'some where', key: '9', phone: '123123123', birthday: '2000/01/01' },
 ]
 
 export const Default = () => {
@@ -89,6 +96,19 @@ export const CustomRowAndHeadStyle = () => {
 export const CustomStripe = () => {
   return (
     <Box p={'32px'} width={'800px'} border={'1px solid red'}>
+      <Table
+        columns={columns as any}
+        data={data}
+        rowStyle={{ background: ['#371B58', '#4C3575', '#5B4B8A', '#7858A6'] }}
+      />
+    </Box>
+  )
+}
+
+
+export const Responsive = () => {
+  return (
+    <Box p={'8px'} width={'100%'} border={'1px solid red'}>
       <Table
         columns={columns as any}
         data={data}

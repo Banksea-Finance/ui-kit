@@ -3,7 +3,7 @@ import Table from 'rc-table'
 import { getOverridableStyle } from '../../utils'
 import { StyledTableProps } from './types'
 
-const getRowBackgrounds = ({ rowStyle }: StyledTableProps) => {
+const getRowBackgrounds = <T,>({ rowStyle }: StyledTableProps<T>) => {
   const { background = ['rgb(20,30,81)', 'rgb(30,40,101)'] } = rowStyle || {}
 
   return background.map((bg, index) => {
@@ -17,18 +17,22 @@ const getRowBackgrounds = ({ rowStyle }: StyledTableProps) => {
   })
 }
 
-export const StyledTable = styled(Table)<StyledTableProps>`
+export const StyledTable = styled(Table)<StyledTableProps<any>>`
   font-family: ${({ theme }) => theme.fontFamilies.common};
+
+  .rc-table-container, .rc-table-content {
+    overflow-x: auto;
+  }
 
   table {
     width: 100%;
   }
-  
+
   .rc-table-cell {
     color: ${({ theme }) => theme.colors.text};
     vertical-align: middle;
   }
-  
+
   thead.rc-table-thead {
     background: ${getOverridableStyle('Table', 'headBackground', ({ theme }) => theme.colors.backgroundSecondary)};
     background: ${(({ headStyle }) => headStyle?.background)};
@@ -49,6 +53,9 @@ export const StyledTable = styled(Table)<StyledTableProps>`
 
     .rc-table-cell {
       color: ${({ rowStyle }) => rowStyle?.color};
+
+      padding: 4px;
+      white-space: nowrap;
     }
 
     &:hover {
