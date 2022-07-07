@@ -73,4 +73,4 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'no-async-promise-executor': 'off'
   }
-};
+}
