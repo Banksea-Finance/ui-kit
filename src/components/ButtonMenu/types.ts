@@ -10,12 +10,14 @@ export interface ButtonMenuItemProps extends BaseButtonProps {
 }
 
 export interface ButtonMenuProps extends HTMLAttributes<HTMLDivElement>, SpaceProps {
-  variant?:/* Extract<'primary' | 'secondary',*/ ButtonVariants/*>*/
+  variant?: ButtonVariants
   activeIndex?: number
   activeKey?: string
   onItemClick?: (args: { index: number; key?: string }) => void
   scale?: Scales
   children: React.ReactElement[]
+
+  itemProps?: BaseButtonProps
 }
 
 export interface StyledButtonMenuProps extends PropsWithTheme, ButtonMenuProps {}

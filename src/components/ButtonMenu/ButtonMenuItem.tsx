@@ -21,10 +21,6 @@ const MenuItemButton = styled(Button)`
   box-shadow: none;
   color: ${({ theme }) => theme.colors.textContrary};
 
-  ${({ theme }) => theme.mediaQueries.maxXl} {
-    padding: 8px 20px;
-  }
-
   &.active {
     transition: all ease-out 0.38s;
   }

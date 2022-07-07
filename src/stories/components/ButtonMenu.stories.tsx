@@ -55,3 +55,17 @@ export const Scales = () => {
     </Grid>
   )
 }
+
+export const CustomItemProps = () => {
+  const [key, setKey] = useState('1')
+
+  return (
+    <Grid p={'32px'} gridTemplateColumns={'max-content'} gridGap={'16px'}>
+      <ButtonMenu activeKey={key} onItemClick={({ key }) => setKey(key!)} scale={'S'} itemProps={{ p: '4px 8px' }}>
+        <ButtonMenu.Item itemKey={'1'} p={'4px 24px'}>Item 1</ButtonMenu.Item>
+        <ButtonMenu.Item itemKey={'2'}>Item 2</ButtonMenu.Item>
+        <ButtonMenu.Item itemKey={'3'}>Item 3</ButtonMenu.Item>
+      </ButtonMenu>
+    </Grid>
+  )
+}

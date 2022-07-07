@@ -18,6 +18,7 @@ class ButtonMenu extends React.Component<ButtonMenuProps, any> {
       onItemClick,
       style,
       children,
+      itemProps,
       ...rest
     } = this.props
 
@@ -26,11 +27,14 @@ class ButtonMenu extends React.Component<ButtonMenuProps, any> {
         {
           Children.map(children, (child: ReactElement, index) => {
             return cloneElement(child, {
+              ...Object.fromEntries(
+                Object.entries(itemProps || {}).filter(([key]) => !(key in child.props))
+              ),
               isActive: activeIndex === index || (activeKey && child.props.itemKey as string === activeKey),
               onClick: onItemClick ? () => onItemClick({ index, key: child.props.itemKey as string }) : undefined,
               scale,
               variant,
-              circle: true
+              circle: true,
             })
           })
         }
