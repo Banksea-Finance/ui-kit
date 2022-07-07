@@ -30,6 +30,7 @@ export const StyledTable = styled(Table)<StyledTableProps<any>>`
 
   .rc-table-cell {
     color: ${({ theme }) => theme.colors.text};
+    padding: 4px;
     vertical-align: middle;
   }
 
@@ -53,8 +54,6 @@ export const StyledTable = styled(Table)<StyledTableProps<any>>`
 
     .rc-table-cell {
       color: ${({ rowStyle }) => rowStyle?.color};
-
-      padding: 4px;
       white-space: nowrap;
     }
 
