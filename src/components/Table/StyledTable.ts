@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Table from 'rc-table'
 import { getOverridableStyle } from '../../utils'
 import { StyledTableProps } from './types'
+import { layout, space } from 'styled-system'
 
 const getRowBackgrounds = <T,>({ rowStyle }: StyledTableProps<T>) => {
   const { background = ['rgb(20,30,81)', 'rgb(30,40,101)'] } = rowStyle || {}
@@ -62,4 +63,7 @@ export const StyledTable = styled(Table)<StyledTableProps<any>>`
       background: ${({ rowStyle }) => rowStyle?.hoverBackground};
     }
   }
+  
+  ${layout}
+  ${space}
 `
