@@ -43,3 +43,17 @@ export const Importance = () => (
     </Text>
   </Grid>
 )
+
+
+export const Mixed = () => (
+  <Grid gap={'16px'} p={'32px'}>
+    <Text fontSize={'32px'}>
+      <span className="primary">Here </span>
+      <span className="secondary">is </span>
+      <span className="primaryContrary">a </span>
+      <span className="gradient">colorful </span>
+      <span className="subtle">sentence </span>
+    </Text>
+
+  </Grid>
+)

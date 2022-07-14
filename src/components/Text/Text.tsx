@@ -35,14 +35,20 @@ const Text = styled.div<TextProps>`
   font-weight: ${getFontWeight};
   line-height: ${getLineHeight};
 
-  .primary {
-    color: ${({ theme }) => theme.colors.primary};
-  }
+  ${({ theme }) => Object.entries(theme.colors).map(([key, value]) => `
+    .${key} { color: ${value}; }
+  `)};
 
+  .gradient {
+    background: ${({ theme }) => theme.colors.gradient};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
   text-transform: ${({ textTransform }) => textTransform};
 
   ${getGradient}
-  
+
   ${space};
   ${layout};
   ${typography};
