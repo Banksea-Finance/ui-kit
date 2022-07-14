@@ -5,7 +5,16 @@ export const PaginationWrapper = styled.div`
     font-family: ${({ theme }) => theme.fontFamilies.common};
   }
   
+  ul {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
   .rc-pagination-item {
+    margin-right: 0;
+    margin-left: 0;
     border: none;
     width: 36px;
     height: 36px;
@@ -35,6 +44,8 @@ export const PaginationWrapper = styled.div`
   }
   
   .rc-pagination-prev, .rc-pagination-next {
+    margin: 0;
+
     button {
       background: transparent;
       border: none;
@@ -43,6 +54,8 @@ export const PaginationWrapper = styled.div`
   }
   
   .rc-pagination-jump-prev, .rc-pagination-jump-next {
+    margin: 0;
+  
     button {
       color: ${({ theme }) => theme.colors.textDisabled};
     }
@@ -65,5 +78,6 @@ export const PaginationWrapper = styled.div`
   .rc-pagination-options {
     display: inline-flex;
     align-items: center;
+    margin: 0;
   }
 `

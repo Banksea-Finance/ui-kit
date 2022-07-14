@@ -24,7 +24,7 @@ export const Default = () => {
   }
 
   return (
-    <Grid p={'32px'} gridTemplateColumns={'repeat(1, max-content)'} gridGap={'32px'}>
+    <Grid p={'32px'} gridTemplateColumns={'repeat(1, 100%)'} gap={'32px'} width={'100vw'}>
       <Text>Current: {current}, Page size: {pageSize}</Text>
 
       <Pagination
