@@ -17,15 +17,24 @@ const defaultPlaceholder = (width?: any, height?: any, borderRadius?: any) => (
 )
 
 export const Image: React.FC<ImageProps> = ({
-  src, placeholder = defaultPlaceholder, height, width, borderRadius, placeholderWidth, placeholderHeight, ...restProps
+  src,
+  placeholder = defaultPlaceholder,
+  height,
+  width,
+  borderRadius,
+  placeholderWidth,
+  placeholderHeight,
+  position, top, left, bottom, right,
+  ...restProps
 }) => {
   const [loading, setLoading] = useState(true)
 
-  return (
+  return loading ? (
     <Box
       width={loading ? placeholderWidth || width : width}
       height={loading ? placeholderHeight || height : height}
-      position={'relative'}
+      position={position}
+      {...{ top, left, bottom, right }}
     >
       <StyledImage
         {...restProps}
@@ -37,15 +46,28 @@ export const Image: React.FC<ImageProps> = ({
         borderRadius={borderRadius}
       />
 
-      {loading && (
-        React.cloneElement(placeholder(placeholderWidth || width, placeholderHeight || height, borderRadius) as any, {
-          style: {
-            position: 'absolute',
-            top: 0,
-            left: 0
-          }
-        })
-      )}
+      <Box position={'relative'}>
+        {loading && (
+          React.cloneElement(placeholder(placeholderWidth || width, placeholderHeight || height, borderRadius) as any, {
+            style: {
+              position: 'absolute',
+              top: 0,
+              left: 0
+            }
+          })
+        )}
+      </Box>
     </Box>
+  ) : (
+    <StyledImage
+      {...restProps}
+      src={src}
+      onLoad={() => setLoading(false)}
+      height={height as any}
+      width={width as any}
+      display={!loading ? 'unset' : 'none'}
+      borderRadius={borderRadius}
+      {...{ position, top, left, bottom, right }}
+    />
   )
 }
