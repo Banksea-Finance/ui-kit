@@ -12,15 +12,21 @@ const StyledImage = styled.img<ImageProps>`
   ${borders}
 `
 
-const defaultPlaceholder = (width?: any, height?: any) => <Skeleton width={width} height={height} />
+const defaultPlaceholder = (width?: any, height?: any, borderRadius?: any) => (
+  <Skeleton width={width} height={height} borderRadius={borderRadius} />
+)
 
 export const Image: React.FC<ImageProps> = ({
-  src, placeholder = defaultPlaceholder, height, width, placeholderWidth, placeholderHeight, ...restProps
+  src, placeholder = defaultPlaceholder, height, width, borderRadius, placeholderWidth, placeholderHeight, ...restProps
 }) => {
   const [loading, setLoading] = useState(true)
 
   return (
-    <Box width={loading ? placeholderWidth || width : width} height={loading ? placeholderHeight || height : height}>
+    <Box
+      width={loading ? placeholderWidth || width : width}
+      height={loading ? placeholderHeight || height : height}
+      position={'relative'}
+    >
       <StyledImage
         {...restProps}
         src={src}
@@ -28,10 +34,11 @@ export const Image: React.FC<ImageProps> = ({
         height={height as any}
         width={width as any}
         display={!loading ? 'unset' : 'none'}
+        borderRadius={borderRadius}
       />
 
       {loading && (
-        React.cloneElement(placeholder(placeholderWidth || width, placeholderHeight || height) as any, {
+        React.cloneElement(placeholder(placeholderWidth || width, placeholderHeight || height, borderRadius) as any, {
           style: {
             position: 'absolute',
             top: 0,

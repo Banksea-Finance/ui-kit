@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Image } from '../../components'
+import { Box, Flex, Image } from '../../components'
 
 export default {
   title: 'Components/Image',
@@ -8,8 +8,8 @@ export default {
 }
 
 export const Default = () => (
-  <Box p={'16px'}>
-    <Image src={'https://cdnb.artstation.com/p/assets/images/images/051/247/745/4k/wlop-33se.jpg?1656829473'} width={{ _: '90vw', xl: '648px' }} placeholderHeight={'600px'} />
-  </Box>
+  <Flex p={'16px'} width={'500px'} height={'500px'} jc={'center'} ai={'center'}>
+    <Image src={'https://l7kv7ogxtpu4nk4ck3mgnknf5atwqmauy63vmjjcnfjygxtm.arweave.net/X9V_fuNeb6carglb-YZqml6CdoMBTHt1YlIm-lTg15s?ext=png'} width={'64px'} height={'64px'} borderRadius={'50%'} />
+  </Flex>
 )
 
