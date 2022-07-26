@@ -19,6 +19,9 @@ export type { DialogProps } from './Dialog'
 export { FormItem } from './FormItem'
 export type { FormItemProps, FormItemLabelPosition } from './FormItem'
 
+export { Image } from './Image'
+export type { ImageProps } from './Image'
+
 export { Input } from './Input'
 export type { InputProps, InputOverridableCSSProperties } from './Input'
 
