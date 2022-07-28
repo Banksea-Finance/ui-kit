@@ -28,7 +28,7 @@ export const Default = () => {
       <Text>Current: {current}, Page size: {pageSize}</Text>
 
       <Pagination
-        pageSizeOptions={[5, 10, 15, 20]}
+        pageSizeOptions={[5, 10, 15, 200]}
         showSizeChanger
         showQuickJumper
         defaultPageSize={20}

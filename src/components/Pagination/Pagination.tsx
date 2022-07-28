@@ -7,8 +7,10 @@ import { clone } from 'lodash'
 
 export const Pagination: React.FC<PaginationProps> = ({ locale, showSizeChanger = false, ...props }) => {
   const SelectForPagination = clone(Select)
+
   SelectForPagination.defaultProps = {
-    scale: 'S'
+    scale: 'S',
+    width: '120px'
   }
 
   return (
@@ -17,7 +19,7 @@ export const Pagination: React.FC<PaginationProps> = ({ locale, showSizeChanger 
       <RcPagination
         {...props}
         showSizeChanger={showSizeChanger}
-        locale={locale || { jump_to: 'Jump to', jump_to_confirm: 'Go', items_per_page: 'pages' }}
+        locale={locale || { jump_to: 'Jump to', jump_to_confirm: 'Go', items_per_page: 'per page' }}
         selectComponentClass={SelectForPagination}
         prevIcon={
           <svg width="10" height="10" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
