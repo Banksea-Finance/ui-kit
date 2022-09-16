@@ -24,17 +24,16 @@ export const Image: React.FC<ImageProps> = ({
   borderRadius,
   placeholderWidth,
   placeholderHeight,
-  position, top, left, bottom, right,
   ...restProps
 }) => {
   const [loading, setLoading] = useState(true)
 
   return loading ? (
     <Box
+      {...restProps}
+      borderRadius={borderRadius}
       width={loading ? placeholderWidth || width : width}
       height={loading ? placeholderHeight || height : height}
-      position={position}
-      {...{ top, left, bottom, right }}
     >
       <StyledImage
         {...restProps}
@@ -67,7 +66,6 @@ export const Image: React.FC<ImageProps> = ({
       width={width as any}
       display={!loading ? 'unset' : 'none'}
       borderRadius={borderRadius}
-      {...{ position, top, left, bottom, right }}
     />
   )
 }
