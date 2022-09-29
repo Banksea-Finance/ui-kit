@@ -6,7 +6,7 @@ import { InputUnstyledProps } from '@mui/base'
 export interface InputProps extends InputUnstyledProps, SpaceProps, LayoutProps {
   scale?: Scales
   variant?: Variants
-  suffixGap?: CSSProperties['width']
+  suffixgap?: CSSProperties['width']
 }
 
 export interface StyledInputProps extends InputProps {

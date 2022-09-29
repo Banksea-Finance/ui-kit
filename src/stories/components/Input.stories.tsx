@@ -50,7 +50,7 @@ export const WithPrefixOrSuffix = () => (
       <Input placeholder={'placeholder...'} endAdornment={<AiOutlineEnter />} />
     </FormItem>
     <FormItem labelPosition={'top'} label={'Suffix only'}>
-      <Input placeholder={'placeholder...'} endAdornment={<Button>Search</Button>} suffixGap={'0'} />
+      <Input placeholder={'placeholder...'} endAdornment={<Button>Search</Button>} suffixgap={'0'} />
     </FormItem>
   </Grid>
 )

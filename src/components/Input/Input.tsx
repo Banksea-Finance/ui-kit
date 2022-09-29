@@ -61,7 +61,7 @@ const StyledInput = styled(InputUnstyled)<InputProps>`
   padding: ${getOverridableStyle('Input', 'padding', '0 8px')};
 
   font-family: ${({ theme }) => theme.fontFamilies.common};
-  padding-right: ${({ suffixGap }) => suffixGap};
+  padding-right: ${({ suffixgap }) => suffixgap};
   
   &.${inputUnstyledClasses.disabled} {
     box-shadow: none;
